@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Puedes agregar estilos globales extra aquí abajo si quieres */
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: white;
+}
+
+/* ... tu código anterior ... */
+
+/* --- ANIMACIONES PERSONALIZADAS --- */
+@layer utilities {
+  @keyframes fade-in-up-scale {
+    from {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95); /* Empieza más abajo y un poco más pequeño */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1); /* Termina en su posición y tamaño normal */
+    }
+  }
+
+  /* Clase para el LOGO */
+  .animate-logo-entry {
+    /* Nombre | Duración | Función de tiempo | Retraso | Estado final */
+    animation: fade-in-up-scale 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    opacity: 0; /* Comienza invisible */
+  }
+
+  /* Clase para el SLOGAN (con más retraso para que entre después) */
+  .animate-slogan-entry {
+    animation: fade-in-up-scale 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    opacity: 0; /* Comienza invisible */
+  }
+}
+
+/* ... resto de tu css ... */
+
+@layer utilities {
+  /* Animación para expandir el ancho */
+  @keyframes expand-width {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  /* Animación para expandir el alto */
+  @keyframes expand-height {
+    from { height: 0; }
+    to { height: 100%; }
+  }
+
+  .animate-border-x {
+    animation: expand-width 0.8s ease-out forwards;
+  }
+  
+  .animate-border-y {
+    animation: expand-height 0.8s ease-out 0.8s forwards; /* 0.8s de delay para esperar al ancho */
+  }
+}
+
+
+/* ... tus otras animaciones ... */
+
+@layer utilities {
+  /* Animación de entrada suave hacia arriba */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 30px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0; /* Comienza invisible */
+  }
+
+  /* Retrasos escalonados para los elementos del grid */
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+  .delay-500 { animation-delay: 0.5s; }
+  .delay-600 { animation-delay: 0.6s; }
+}
