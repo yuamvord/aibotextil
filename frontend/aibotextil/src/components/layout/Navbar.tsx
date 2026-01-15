@@ -15,11 +15,10 @@ const navLinks = [
     // Dejaré ambos por si Productos es el catálogo general y Telas el acceso rápido.
   },
   { 
-    name: "TECNOLOGÍAS", 
-    href: "/tecnologias", 
+    name: "TECNOLOGÍAS",  
     submenu: [
-      { name: "Sostenibilidad", href: "/tecnologias/sostenibilidad" },
-      { name: "Rendimiento Deportivo", href: "/tecnologias/rendimiento" }
+      { name: "Sostenibilidad", href: "/sostenibilidad" },
+      { name: "Rendimiento Deportivo", href: "/rendimiento" }
     ]
   },
   { name: "BLOG", href: "/blog" },
