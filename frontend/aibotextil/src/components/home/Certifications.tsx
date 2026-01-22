@@ -7,14 +7,14 @@ const certs = [
     image: "/images/oeko-tex.png", // Asegúrate de que el nombre coincida
     width: 290, // Ajuste visual para que se vean del mismo tamaño
     height: 290,
-    link: "https://www.oeko-tex.com/en/",
+    link: "/certificaciones",
   },
   {
     name: "Global Recycled Standard",
     image: "/images/grs.png",
     width: 290, 
     height: 290,
-    link: "https://certifications.controlunion.com/en/certification-programs/certification-programs/grs-global-recycled-standard",
+    link: "/certificaciones",
   },
 ];
 

@@ -9,15 +9,6 @@ const navLinks = [
   { name: "INICIO", href: "/" },
   { name: "QUIENES SOMOS", href: "/quienes-somos" },
   { 
-    name: "TECNOLOGÍAS",  
-    submenu: [
-      { name: "Sostenibilidad", href: "/sostenibilidad" },
-      { name: "Rendimiento Deportivo", href: "/rendimiento" },
-      { name: "Nuestras Certificaciones", href: "/certificaciones" }
-    ]
-  },
-  { name: "BLOG", href: "/blog" },
-  { 
     name: "PRODUCTOS", 
     href: "/telas",
     submenu: [
@@ -28,6 +19,16 @@ const navLinks = [
       { name: "Tecnología", href: "/telas/tecnologia" }
     ]
   },
+  {name: "USOS", href: "/usos"},
+  { 
+    name: "TECNOLOGÍAS",  
+    submenu: [
+      { name: "Sostenibilidad", href: "/sostenibilidad" },
+      { name: "Rendimiento Deportivo", href: "/rendimiento" },
+      { name: "Nuestras Certificaciones", href: "/certificaciones" }
+    ]
+  },
+  { name: "BLOG", href: "/blog" },
   { name: "CONTACTO", href: "/contacto" },
 ];
 
