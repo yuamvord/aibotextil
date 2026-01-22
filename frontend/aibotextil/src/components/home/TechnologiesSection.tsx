@@ -59,7 +59,7 @@ const TechnologiesSection = () => {
           <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors"></div>
           
           <div className="absolute bottom-10 left-0 w-full flex justify-center z-30 px-4">
-             <Link href="/sostenibilidad" className="flex items-center gap-2 text-white font-bold tracking-widest uppercase hover:text-aibo-red transition-colors group">
+             <Link href="/sostenibilidad" className="flex items-center gap-2 text-white font-bold tracking-widest uppercase hover:text-aibo-red transition-colors group text-xl ">
                 Sostenibilidad
                 <div className="bg-aibo-red rounded-full p-1 group-hover:translate-x-1 transition-transform">
                   <ArrowRight size={16} />
@@ -90,7 +90,7 @@ const TechnologiesSection = () => {
           <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors"></div>
 
           <div className="absolute bottom-10 left-0 w-full flex justify-center z-30 px-4">
-             <Link href="/rendimiento" className="flex items-center gap-2 text-white font-bold tracking-widest uppercase hover:text-aibo-red transition-colors group">
+             <Link href="/rendimiento" className="flex items-center gap-2 text-white font-bold tracking-widest uppercase hover:text-aibo-red transition-colors group text-xl">
                 Rendimiento Deportivo
                 <div className="bg-aibo-red rounded-full p-1 group-hover:translate-x-1 transition-transform">
                   <ArrowRight size={16} />

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar"; 
 import Footer from "@/components/layout/Footer"; // <--- 1. IMPORTAR
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 export const metadata: Metadata = {
   title: "Aibo Textil - Innovación para el deporte",
@@ -27,9 +28,9 @@ export default function RootLayout({
           {children}
         </main>
         
+        <WhatsAppButton />
         {/* 2. AQUI VA EL FOOTER */}
         <Footer />
-
       </body>
     </html>
   );

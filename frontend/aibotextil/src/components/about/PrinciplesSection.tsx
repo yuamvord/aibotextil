@@ -13,36 +13,36 @@ const principles = [
     id: 1,
     text: "Equilibrar rendimiento y respeto ambiental",
     icon: Scale,
-    color: "bg-teal-600", // Color del círculo principal
-    shadow: "bg-teal-800/20", // Color de la sombra (opcional) o usamos gris fijo
+    color: "bg-[#5da7a6]", // Color del círculo principal
+    shadow: "bg-[#5da7a6]/20", // Color de la sombra (opcional) o usamos gris fijo
     delay: "delay-100",
   },
   {
     id: 2,
     text: "Fomentar la competitividad de la industria textil Guatemalteca",
     icon: LayoutGrid, // Representa el tejido/estructura
-    color: "bg-aibo-red",
+    color: "bg-[#fa4647]",
     delay: "delay-200",
   },
   {
     id: 3,
     text: "Establecer relaciones comerciales sólidas y confiables",
     icon: Handshake,
-    color: "bg-gray-500",
+    color: "bg-[#adabb0]",
     delay: "delay-300",
   },
   {
     id: 4,
     text: "Promover mejora continua en procesos, calidad y servicio",
     icon: RefreshCw,
-    color: "bg-sky-400",
+    color: "bg-[#92cddb]",
     delay: "delay-400",
   },
   {
     id: 5,
     text: "Inspirar a marcas locales con materiales de nivel mundial",
     icon: Globe,
-    color: "bg-pink-400",
+    color: "bg-[#ffb5b6]",
     delay: "delay-500",
   },
 ];

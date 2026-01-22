@@ -56,7 +56,7 @@ const ProductCategories = () => {
         {/* Título de sección (Opcional, pero recomendado para SEO) */}
         <div className="text-center mb-12">
            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 tracking-tight uppercase">
-             Nuestros <span className="text-aibo-red">Materiales</span>
+             Nuestros <span className="text-aibo-red">Productos</span>
            </h2>
            <div className="w-24 h-1 bg-aibo-red mx-auto mt-4 rounded-full"></div>
         </div>

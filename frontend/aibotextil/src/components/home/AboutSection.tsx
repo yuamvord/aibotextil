@@ -7,7 +7,7 @@ const AboutSection = () => {
       {/* --- 1. IMAGEN DE FONDO --- */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/about-bg.jpg" // Asegúrate de tener esta imagen
+          src="/images/aboutus-bg.jpg" // Asegúrate de tener esta imagen
           alt="Fondo de telas"
           fill
           className="object-cover"

@@ -9,27 +9,23 @@ const navLinks = [
   { name: "INICIO", href: "/" },
   { name: "QUIENES SOMOS", href: "/quienes-somos" },
   { 
-    name: "PRODUCTOS", 
-    href: "/productos" 
-    // Nota: Si "PRODUCTOS" y "TELAS" son lo mismo, podrías borrar uno de los dos.
-    // Dejaré ambos por si Productos es el catálogo general y Telas el acceso rápido.
-  },
-  { 
     name: "TECNOLOGÍAS",  
     submenu: [
       { name: "Sostenibilidad", href: "/sostenibilidad" },
-      { name: "Rendimiento Deportivo", href: "/rendimiento" }
+      { name: "Rendimiento Deportivo", href: "/rendimiento" },
+      { name: "Nuestras Certificaciones", href: "/certificaciones" }
     ]
   },
   { name: "BLOG", href: "/blog" },
   { 
-    name: "TELAS", 
+    name: "PRODUCTOS", 
     href: "/telas",
     submenu: [
       { name: "Nylon", href: "/telas/nylon" },
       { name: "Poliéster", href: "/telas/poliester" },
       { name: "Spandex", href: "/telas/spandex" },
       { name: "Jacquard", href: "/telas/jacquard" },
+      { name: "Tecnología", href: "/telas/tecnologia" }
     ]
   },
   { name: "CONTACTO", href: "/contacto" },

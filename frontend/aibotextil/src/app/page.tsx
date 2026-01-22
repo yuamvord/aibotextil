@@ -2,6 +2,7 @@ import Banner from "@/components/home/Banner";
 import AboutSection from "@/components/home/AboutSection";
 import ProductCategories from "@/components/home/ProductCategories";
 import TechnologiesSection from "@/components/home/TechnologiesSection";
+import Certifications from "@/components/home/Certifications";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
       <AboutSection />
       <ProductCategories />
       <TechnologiesSection />
-
+      <Certifications />
       {/* Aquí irán las siguientes secciones (Productos, Blog, etc.) */}
 
     </main>

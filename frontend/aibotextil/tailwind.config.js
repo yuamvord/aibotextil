@@ -11,7 +11,7 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         aibo: {
-          red: '#F04E3E',
+          red: '#fa4647',
           teal: '#669999',
           dark: '#1a1a1a',
         }
