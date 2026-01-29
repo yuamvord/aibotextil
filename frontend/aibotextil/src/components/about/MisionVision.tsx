@@ -7,7 +7,7 @@ const MissionVision = () => {
       {/* 1. FONDO (La foto del Showroom) */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/about-showroom.png" // La foto de tu diseño (tienda con telas)
+          src="/images/about-showroom.jpg" // La foto de tu diseño (tienda con telas)
           alt="Showroom Aibo Textil"
           fill
           className="object-cover"

@@ -3,6 +3,7 @@ import AboutSection from "@/components/home/AboutSection";
 import ProductCategories from "@/components/home/ProductCategories";
 import TechnologiesSection from "@/components/home/TechnologiesSection";
 import Certifications from "@/components/home/Certifications";
+import UsesSection from "@/components/home/UsesSection";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <AboutSection />
       <ProductCategories />
       <TechnologiesSection />
+      <UsesSection />
       <Certifications />
       {/* Aquí irán las siguientes secciones (Productos, Blog, etc.) */}
 

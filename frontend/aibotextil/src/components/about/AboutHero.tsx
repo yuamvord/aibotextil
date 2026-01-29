@@ -2,12 +2,12 @@ import Image from "next/image";
 
 const AboutHero = () => {
   return (
-    <section className="relative w-full h-[50vh] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full h-[70vh] flex items-center justify-center overflow-hidden">
       
       {/* 1. IMAGEN DE FONDO (Oscura y elegante) */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/about-hero.jpg" // Tu imagen artística
+          src="/images/banner_quienes_somos.jpg" // Tu imagen artística
           alt="Detalle textil"
           fill
           className="object-cover"

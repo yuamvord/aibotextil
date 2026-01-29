@@ -25,7 +25,7 @@ const perfTechs = [
     subtitle: "SECADO RÁPIDO",
     description: "Tecnología que permite que la tela se seque rápidamente. Las fibras están diseñadas para no retener la humedad, sino dispersarla sobre una superficie amplia.",
     uses: "Camisetas deportivas, ropa de entrenamiento y outdoor.",
-    image: "/images/tech-quickdry.jpg",
+    image: "/images/tech-quick.jpg",
     icon: Zap,
     accent: "bg-yellow-500",
   },
@@ -59,6 +59,16 @@ const perfTechs = [
     icon: ThermometerSnowflake,
     accent: "bg-cyan-500",
   },
+  {
+    id: "waterprof",
+    title: "WATERPROF",
+    subtitle: "ALTO RENDIMIENTO",
+    description: "En Aibo Textil ofrecemos telas técnicas de alto rendimiento con resistencia superior al agua (hasta 20,000 mm de carga hidrostática), costuras selladas y membranas transpirables que permiten evacuar el vapor del sudor sin dejar pasar el agua, garantizando sequedad y confort incluso en condiciones extremas. Nuestras telas brindan protección contra el viento y los rayos UV, alta durabilidad y ligereza, además de flexibilidad y diseño moderno para aplicaciones deportivas, outdoor y urbanas. Incorporamos innovaciones sostenibles con materiales reciclables y tecnologías eco conscientes, cumpliendo estándares internacionales de calidad, para asegurar un rendimiento confiable y responsable.",
+    uses: "Ropa deportiva, equipamiento de aventura, moda urbana.",
+    image: "/images/tech-waterprof.jpg",
+    icon: ThermometerSnowflake,
+    accent: "bg-cyan-500",
+  }
 ];
 
 const PerformanceTechList = () => {

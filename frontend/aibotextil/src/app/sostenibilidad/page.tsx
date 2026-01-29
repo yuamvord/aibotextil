@@ -1,5 +1,6 @@
 import SustainabilityHero from "@/components/sostenibilidad/SustainabilityHero";
 import EcoTechList from "@/components/sostenibilidad/EcoTechList";
+import SustainabilityVideo from "@/components/sostenibilidad/SustainabilityVideo";
 
 export default function SostenibilidadPage() {
   return (
@@ -10,6 +11,8 @@ export default function SostenibilidadPage() {
 
       {/* 2. Lista de Tecnologías del PDF */}
       <EcoTechList />
+
+      <SustainabilityVideo />
       {/* 3. CTA Final (Llamada a la acción) */}
       <section className="py-20 bg-emerald-900 text-center px-6">
         <h2 className="text-3xl text-white font-bold mb-4">

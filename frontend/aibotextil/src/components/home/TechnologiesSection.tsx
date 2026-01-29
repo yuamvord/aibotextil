@@ -71,7 +71,7 @@ const TechnologiesSection = () => {
         {/* COLUMNA 2: DECORATIVA */}
         <div className="relative h-full w-full hidden md:block overflow-hidden">
           <Image
-            src="/images/tech-runner.png"
+            src="/images/tech-runner.jpg"
             alt="Runner"
             fill
             className="object-cover"
