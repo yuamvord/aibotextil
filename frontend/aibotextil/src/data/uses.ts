@@ -1,23 +1,25 @@
 // src/data/uses.ts
 import { Move, Droplets, Feather, ShieldCheck, Activity, Wind, Layers, Zap } from "lucide-react";
 
-// Interfaces para TypeScript (opcional pero recomendado)
+// 1. Actualizamos la INTERFAZ para incluir 'detailImage'
 export interface UseCategory {
   id: string;
-  label: string; // Nombre corto para el botón del menú
+  label: string;
   title: string;
   subtitle: string;
-  description: string;
+  description: string; 
+  detailImage: string;  // <--- NUEVO CAMPO: Imagen para la tarjeta pequeña de ingeniería
   introTitle: string;
   introText: string;
   recommendedList: string[];
   grammage: string;
   compositions: { title: string; percentage: string; description: string; tag?: string }[];
-  features: { title: string; description: string; icon: any }[]; // Usamos 'any' para simplificar los iconos por ahora
-  themeColor: string; // Color de texto
-  gradient: string; // Color de fondo degradado
+  features: { title: string; description: string; icon: any }[];
+  themeColor: string;
+  gradient: string;
 }
 
+// 2. Actualizamos los DATOS
 export const usesDatabase: Record<string, UseCategory> = {
   yoga: {
     id: "yoga",
@@ -25,6 +27,10 @@ export const usesDatabase: Record<string, UseCategory> = {
     title: "YOGA & WELLNESS",
     subtitle: "Conexión y Elasticidad",
     description: "Ingeniería diseñada para estiramientos profundos y control postural.",
+    
+    // Imágenes
+    detailImage: "/images/usos-yoga.jpg",   // <--- Aquí pones la foto de textura/close-up
+    
     introTitle: "Biomecánica del Movimiento",
     introText: "Las telas para yoga responden a estiramientos profundos y contracciones sostenidas. La ingeniería se centra en elasticidad multidireccional, suavidad extrema y gestión de humedad.",
     recommendedList: ["Yoga", "Pilates", "Barre", "Stretching", "Hot Yoga", "Athleisure"],
