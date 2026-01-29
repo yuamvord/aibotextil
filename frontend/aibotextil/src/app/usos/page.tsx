@@ -21,31 +21,31 @@ export default function UsosPage() {
     <main className="w-full min-h-screen bg-white">
 
       {/* --- 1. ENCABEZADO GLOBAL (Fijo) --- */}
-      <section className="bg-black text-white pt-24 pb-12 px-6 text-center">
-        <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4">
-          Catálogo de <span className="text-aibo-red">Usos</span>
-        </h1>
-        <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-          Descubre la tecnología ideal para cada disciplina. Selecciona una categoría para ver sus especificaciones.
-        </p>
+     {/* --- 1. ENCABEZADO GLOBAL (Fijo) --- */}
+      <section className="relative w-full pt-32 pb-20 px-6 text-center overflow-hidden bg-black">
+        
+        {/* IMAGEN DE FONDO */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/usos-bg-page.jpg" // <--- ¡Asegúrate de guardar una imagen aquí!
+            alt="Fondo Usos"
+            fill
+            className="object-cover opacity-80"
+            priority
+          />
+          {/* Overlay oscuro para que el texto resalte */}
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
 
-        {/* --- MENÚ DE PESTAÑAS (TABS) --- */}
-        <div className="flex flex-wrap justify-center gap-4 mt-10">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`
-                px-8 py-3 rounded-full font-bold uppercase tracking-widest transition-all duration-300 border-2
-                ${activeTab === tab.id 
-                  ? "bg-white text-black border-white scale-105 shadow-[0_0_20px_rgba(255,255,255,0.3)]" 
-                  : "bg-transparent text-gray-500 border-gray-700 hover:border-gray-400 hover:text-white"
-                }
-              `}
-            >
-              {tab.label}
-            </button>
-          ))}
+        {/* CONTENIDO (Texto y Tabs) - Con z-10 para estar encima de la foto */}
+        <div className="relative z-10">
+          <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-white drop-shadow-xl">
+            Catálogo de <span className="text-aibo-red">Usos</span>
+          </h1>
+          <p className="text-gray-200 max-w-2xl mx-auto text-lg font-medium drop-shadow-md">
+            Telas pensadas para cada disciplina, diseñadas para brindar confort, rendimiento y calidad real
+          </p>
+
         </div>
       </section>
 
@@ -57,15 +57,6 @@ export default function UsosPage() {
         <section className="relative w-full h-[50vh] flex items-center justify-center overflow-hidden bg-gray-900">
           <div className="absolute inset-0 z-0">
             {/* Si no tienes la imagen exacta, no romperá la página, mostrará fondo gris */}
-            {data.heroImage && (
-              <Image
-                src={data.heroImage}
-                alt={data.title}
-                fill
-                className="object-cover opacity-50"
-                priority
-              />
-            )}
             <div className={`absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent`}></div>
             {/* Overlay de color según el tema del deporte */}
             <div className={`absolute inset-0 bg-gradient-to-r ${data.gradient} mix-blend-overlay opacity-60`}></div>

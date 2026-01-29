@@ -7,7 +7,6 @@ export interface UseCategory {
   label: string; // Nombre corto para el botón del menú
   title: string;
   subtitle: string;
-  heroImage: string;
   description: string;
   introTitle: string;
   introText: string;
@@ -25,7 +24,6 @@ export const usesDatabase: Record<string, UseCategory> = {
     label: "Yoga",
     title: "YOGA & WELLNESS",
     subtitle: "Conexión y Elasticidad",
-    heroImage: "/images/usos/yoga-hero.jpg",
     description: "Ingeniería diseñada para estiramientos profundos y control postural.",
     introTitle: "Biomecánica del Movimiento",
     introText: "Las telas para yoga responden a estiramientos profundos y contracciones sostenidas. La ingeniería se centra en elasticidad multidireccional, suavidad extrema y gestión de humedad.",

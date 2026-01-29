@@ -76,7 +76,7 @@ const TechnologiesSection = () => {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/10"></div>
         </div>
 
         {/* COLUMNA 3: RENDIMIENTO */}

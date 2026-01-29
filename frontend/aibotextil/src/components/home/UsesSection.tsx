@@ -9,7 +9,7 @@ const UsesSection = () => {
       {/* --- 1. FONDO (Imagen de siluetas) --- */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/usos-bg.png" // Asegúrate de guardar tu imagen con este nombre
+          src="/images/usos-bg.jpg" // Asegúrate de guardar tu imagen con este nombre
           alt="Deportes y Usos"
           fill
           className="object-cover opacity-60" // Bajamos opacidad para que se lea el texto
