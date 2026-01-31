@@ -31,7 +31,7 @@ export default function CertificacionesPage() {
           Transparencia y Calidad
         </span>
         <h1 className="text-4xl md:text-6xl font-black text-gray-900 uppercase tracking-tight mb-6">
-          Nuestras <span className="text-transparent bg-clip-text bg-gradient-to-r from-aibo-red to-red-900">Certificaciones</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-aibo-red to-red-900">Certificaciones</span>
         </h1>
         <p className="max-w-2xl mx-auto text-lg text-gray-600 leading-relaxed">
           En Aibo Textil, la calidad no es solo una promesa, es una norma verificada. 

@@ -12,7 +12,7 @@ export interface FabricCategory {
   title: string;
   description: string;
   heroImage: string;
-  color: string; // <--- AQUÍ ES DONDE CONTROLAS EL COLOR DEL FONDO DERECHO
+  color: string;
   subProducts: SubProduct[];
 }
 
@@ -21,9 +21,10 @@ export const fabricDatabase: Record<string, FabricCategory> = {
     id: "nylon",
     title: "Telas Nylon",
     description: "Resistencia superior y tacto suave.",
-    heroImage: "/images/nylon.png",
+    heroImage: "/images/imagesProducts/D01.jpg",
     color: "#fa4647", 
     subProducts: [
+      { id: "nylon", name: "Nylon 100%", description: "Nylon 100%", features: ["Compresión"] },
       { id: "nylon-spandex", name: "Nylon + Spandex", description: "Elasticidad premium.", features: ["Compresión"] },
       { id: "nylon-jacquard", name: "Nylon Jacquard", description: "Texturas y diseños.", features: ["Texturizado"] },
       { id: "nylon-tech", name: "Nylon Tecnología", description: "Tratamientos avanzados.", features: ["Tech"] },
@@ -34,14 +35,13 @@ export const fabricDatabase: Record<string, FabricCategory> = {
     id: "poliester",
     title: "Telas Poliéster",
     description: "Versatilidad y rendimiento.",
-    heroImage: "/images/poliester.png",
-    color: "#79bfcf", // Azul fuerte para diferenciar
+    heroImage: "/images/imagesProducts/poliester.png",
+    color: "#79bfcf", 
     subProducts: [
       { id: "poly-100", name: "Poliéster 100%", description: "Básico fundamental.", features: ["Sublimable"] },
-      { id: "poly-pique", name: "Piqué Poliéster", description: "Tejido con textura.", features: ["Transpirable"] },
-      { id: "poly-interlock", name: "Interlock", description: "Tejido doble cara.", features: ["Suave"] },
       { id: "poly-spandex", name: "Poliéster + Spandex", description: "Ajuste cómodo.", features: ["Elástico"] },
       { id: "poly-jacquard", name: "Poliéster Jacquard", description: "Diseños intrincados.", features: ["Diseño"] },
+      { id: "poly-tec", name: "Poliéster Tecnología", description: "Diseños tecnologícos.", features: ["Diseño"] },
       { id: "poly-reciclado", name: "Poliéster Reciclado", description: "RPET.", features: ["Sostenible"] },
     ]
   },
@@ -49,8 +49,8 @@ export const fabricDatabase: Record<string, FabricCategory> = {
     id: "spandex",
     title: "Spandex",
     description: "Elasticidad vital.",
-    heroImage: "/images/spandex.png",
-    color: "#adabb0", // Cyan para Spandex
+    heroImage: "/images/imagesProducts/spandex.png",
+    color: "#adabb0", 
     subProducts: [
       { id: "nylon-spandex-mix", name: "Nylon Spandex", description: "Mezcla premium.", features: ["Estiramiento"] },
       { id: "poly-spandex-mix", name: "Poliéster Spandex", description: "Económica.", features: ["Versátil"] },
@@ -60,7 +60,7 @@ export const fabricDatabase: Record<string, FabricCategory> = {
     id: "jacquard",
     title: "Jacquard",
     description: "Ingeniería visible.",
-    heroImage: "/images/jacquard.png",
+    heroImage: "/images/imagesProducts/jacquard.jpg",
     color: "#5da7a6", 
     subProducts: [
       { id: "jacquard-nylon", name: "Nylon Jacquard", description: "Textura suave.", features: ["Premium"] },
@@ -71,7 +71,7 @@ export const fabricDatabase: Record<string, FabricCategory> = {
     id: "tecnologia",
     title: "Tecnología",
     description: "Tecnología avanzada",
-    heroImage: "/images/tecnoTela.png",
+    heroImage: "/images/imagesProducts/tecnoTela.png",
     color: "#2d7580", 
     subProducts: [
       { id: "jacquard-nylon", name: "Nylon Jacquard", description: "Textura suave.", features: ["Premium"] },

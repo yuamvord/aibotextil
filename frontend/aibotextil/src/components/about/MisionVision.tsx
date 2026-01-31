@@ -4,25 +4,20 @@ const MissionVision = () => {
   return (
     <section className="relative w-full py-24 px-6 md:px-12 flex items-center justify-center min-h-[80vh]">
       
-      {/* 1. FONDO (La foto del Showroom) */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/about-showroom.jpg" // La foto de tu diseño (tienda con telas)
+          src="/images/imagesAboutUs/about-showroom.jpg" 
           alt="Showroom Aibo Textil"
           fill
           className="object-cover"
         />
-        {/* Capa blanca suave (o negra suave) para atenuar la foto y que se lea el texto */}
-        {/* En tu diseño parece que la foto tiene su color natural, 
-            pero recomiendo una capa oscura muy sutil para contraste */}
+       
         <div className="absolute inset-0 bg-black/40"></div>
       </div>
 
-      {/* 2. CONTENEDOR DE LAS TARJETAS */}
       <div className="relative z-10 container mx-auto max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-stretch">
           
-          {/* --- TARJETA MISIÓN --- */}
           <div className="group border-2 border-white rounded-[2rem] p-8 md:p-12 text-center text-white backdrop-blur-sm bg-white/5 hover:bg-black/40 transition-all duration-500">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-wide drop-shadow-md">
               Misión
@@ -35,7 +30,6 @@ const MissionVision = () => {
             </p>
           </div>
 
-          {/* --- TARJETA VISIÓN --- */}
           <div className="group border-2 border-white rounded-[2rem] p-8 md:p-12 text-center text-white backdrop-blur-sm bg-white/5 hover:bg-black/40 transition-all duration-500">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-wide drop-shadow-md">
               Visión

@@ -132,7 +132,7 @@ const Footer = () => {
                   href="/productos/nylon"
                   className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block"
                 >
-                  Telas Nylon
+                  Nylon
                 </Link>
               </li>
               <li>

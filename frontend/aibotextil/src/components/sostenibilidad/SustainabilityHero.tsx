@@ -4,20 +4,17 @@ const SustainabilityHero = () => {
   return (
     <section className="relative w-full h-[50vh] md:h-[60vh] flex items-center justify-center overflow-hidden">
       
-      {/* 1. IMAGEN DE FONDO */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/sust-hero.jpg" // Imagen de naturaleza/textil
+          src="/images/imagesSostenibility/sust-hero.jpg"
           alt="Textiles Sostenibles"
           fill
           className="object-cover"
           priority
         />
-        {/* Filtro verde oscuro/negro para que el texto resalte */}
         <div className="absolute inset-0 bg-emerald-900/60 mix-blend-multiply"></div>
       </div>
 
-      {/* 2. TEXTO CENTRAL */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto space-y-6 animate-fade-in-up">
         <div className="inline-block px-4 py-1 border border-green-400 rounded-full mb-2">
           <span className="text-green-300 text-sm font-bold tracking-widest uppercase">

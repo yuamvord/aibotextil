@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { 
-  Droplets, // Moisture Wicking
-  Zap,      // Quick Dry
-  Sun,      // UPF 50+
-  ShieldCheck, // Anti-bacterial
-  ThermometerSnowflake // Cooling
+  Droplets, 
+  Zap,     
+  Sun,     
+  ShieldCheck, 
+  ThermometerSnowflake,
+  Waves
 } from "lucide-react";
 
 const perfTechs = [
@@ -15,7 +16,7 @@ const perfTechs = [
     subtitle: "ABSORCIÓN DE HUMEDAD",
     description: "Transporte de humedad 'sweat management'. Absorbe el sudor de la piel y lo lleva a la superficie exterior de la tela para evaporarse rápidamente.",
     uses: "Ropa deportiva de alto rendimiento, interior funcional.",
-    image: "/images/tech-wicking.jpg",
+    image: "/images/imagesPerformance/tech-wicking.jpg",
     icon: Droplets,
     accent: "bg-blue-600",
   },
@@ -25,7 +26,7 @@ const perfTechs = [
     subtitle: "SECADO RÁPIDO",
     description: "Tecnología que permite que la tela se seque rápidamente. Las fibras están diseñadas para no retener la humedad, sino dispersarla sobre una superficie amplia.",
     uses: "Camisetas deportivas, ropa de entrenamiento y outdoor.",
-    image: "/images/tech-quick.jpg",
+    image: "/images/imagesPerformance/tech-quick.jpg",
     icon: Zap,
     accent: "bg-yellow-500",
   },
@@ -35,7 +36,7 @@ const perfTechs = [
     subtitle: "ANTI-UV",
     description: "Factor de Protección Ultravioleta 50+. Bloquea más del 98% de los rayos UVA y UVB. El tejido actúa como una barrera solar física.",
     uses: "Ropa para correr, ciclismo, natación y actividades al aire libre.",
-    image: "/images/tech-uv.jpg",
+    image: "/images/imagesPerformance/tech-uv.jpg",
     icon: Sun,
     accent: "bg-orange-500",
   },
@@ -45,7 +46,7 @@ const perfTechs = [
     subtitle: "HIGIENE TOTAL",
     description: "Tejidos tratados con agentes que inhiben el crecimiento bacteriano. Evita el mal olor en la ropa deportiva incluso tras entrenamientos intensos.",
     uses: "Ropa interior, uniformes, ropa hospitalaria.",
-    image: "/images/tech-bacterial.jpg",
+    image: "/images/imagesPerformance/tech-bacterial.jpg",
     icon: ShieldCheck,
     accent: "bg-emerald-500",
   },
@@ -55,7 +56,7 @@ const perfTechs = [
     subtitle: "ENFRIAMIENTO ACTIVO",
     description: "Las fibras dispersan el calor corporal y generan sensación de frescura mediante microcanales o minerales refrigerantes integrados.",
     uses: "Ropa para climas cálidos, running, ciclismo.",
-    image: "/images/tech-cooling.jpg",
+    image: "/images/imagesPerformance/tech-cooling.jpg",
     icon: ThermometerSnowflake,
     accent: "bg-cyan-500",
   },
@@ -65,8 +66,8 @@ const perfTechs = [
     subtitle: "ALTO RENDIMIENTO",
     description: "En Aibo Textil ofrecemos telas técnicas de alto rendimiento con resistencia superior al agua (hasta 20,000 mm de carga hidrostática), costuras selladas y membranas transpirables que permiten evacuar el vapor del sudor sin dejar pasar el agua, garantizando sequedad y confort incluso en condiciones extremas. Nuestras telas brindan protección contra el viento y los rayos UV, alta durabilidad y ligereza, además de flexibilidad y diseño moderno para aplicaciones deportivas, outdoor y urbanas. Incorporamos innovaciones sostenibles con materiales reciclables y tecnologías eco conscientes, cumpliendo estándares internacionales de calidad, para asegurar un rendimiento confiable y responsable.",
     uses: "Ropa deportiva, equipamiento de aventura, moda urbana.",
-    image: "/images/tech-waterprof.jpg",
-    icon: ThermometerSnowflake,
+    image: "/images/imagesPerformance/tech-waterprof.jpg",
+    icon: Waves,
     accent: "bg-cyan-500",
   }
 ];
@@ -81,7 +82,6 @@ const PerformanceTechList = () => {
         return (
           <section key={tech.id} className="relative w-full py-24 px-6 overflow-hidden">
             
-            {/* Fondo alternado sutil */}
             {!isEven && <div className="absolute inset-0 bg-gray-50 skew-y-1 transform origin-top-left -z-10"></div>}
 
             <div className="container mx-auto max-w-6xl relative z-10">
@@ -90,13 +90,10 @@ const PerformanceTechList = () => {
                 isEven ? "md:flex-row" : "md:flex-row-reverse"
               )}>
                 
-                {/* --- IMAGEN CON ESTILO DEPORTIVO --- */}
                 <div className="flex-1 w-full group">
                   <div className="relative h-[400px] w-full shadow-2xl overflow-hidden">
-                    {/* Elemento decorativo detrás */}
                     <div className={cn("absolute top-0 right-0 w-full h-full opacity-20 translate-x-4 translate-y-4 transition-transform group-hover:translate-x-6 group-hover:translate-y-6", tech.accent)}></div>
                     
-                    {/* Imagen principal recortada (clip-path opcional para más dinamismo) */}
                     <Image
                       src={tech.image}
                       alt={tech.title}
@@ -104,12 +101,10 @@ const PerformanceTechList = () => {
                       className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
                     />
                     
-                    {/* Overlay de color en hover */}
                     <div className={cn("absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity mix-blend-overlay", tech.accent)}></div>
                   </div>
                 </div>
 
-                {/* --- TEXTO TÉCNICO --- */}
                 <div className="flex-1 space-y-8">
                   <div className="flex items-center gap-4">
                     <div className={cn("p-4 text-white shadow-lg transform -skew-x-12", tech.accent)}>

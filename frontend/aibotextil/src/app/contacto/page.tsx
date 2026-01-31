@@ -11,6 +11,10 @@ export default function ContactoPage() {
             <input type="text" className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-aibo-red" placeholder="Tu nombre" />
           </div>
           <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Número de Teléfono</label>
+            <input type="tel" className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-aibo-red" placeholder="Tu número teléfonico" />
+          </div>
+          <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Correo</label>
             <input type="email" className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-aibo-red" placeholder="tucorreo@empresa.com" />
           </div>
