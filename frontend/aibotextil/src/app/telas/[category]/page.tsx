@@ -1,102 +1,96 @@
-import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
-import { fabricDatabase } from "@/data/fabrics";
+import { db } from '@/lib/db';
+
 
 interface PageProps {
   params: {
-    category: string;
+    category: string; // Ej: "nylon"
   };
 }
 
-export async function generateMetadata({ params }: PageProps) {
-  const category = fabricDatabase[params.category];
-  if (!category) return { title: "Producto no encontrado" };
-  return {
-    title: `${category.title} - Aibo Textil`,
-    description: category.description,
-  };
-}
+export default function CategoryMenuPage({ params }: PageProps) {
+  const mainCategorySlug = params.category;
+  const mainCategoryTitle = mainCategorySlug.toUpperCase(); // NYLON
 
-export default function DynamicCategoryPage({ params }: PageProps) {
-  const categoryData = fabricDatabase[params.category];
-
-  if (!categoryData) {
-    notFound();
-  }
-
-  const whatsappNumber = "50200000000";
-  const whatsappMessage = `Hola, me interesa recibir asesoría sobre las telas de ${categoryData.title}.`;
+  // Opciones del menú
+  const menuOptions = [
+    { label: "TODAS", subSlug: "todas" },
+    { label: `${mainCategoryTitle} 100%`, subSlug: `${mainCategorySlug}-100` },
+    { label: `${mainCategoryTitle} + SPANDEX`, subSlug: "spandex" },
+    { label: `${mainCategoryTitle} JACQUARD`, subSlug: "jacquard" },
+    { label: `${mainCategoryTitle} TECNOLOGÍA`, subSlug: "tecnologia" },
+    { label: `${mainCategoryTitle} RECICLADO`, subSlug: "reciclado" },
+  ];
 
   return (
-    <main className="w-full min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 md:px-8">
-      
-      <div className="w-full max-w-6xl bg-white shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-[600px]">
+
+    <main className="min-h-screen w-full bg-gray-50 flex items-center justify-center p-6 md:p-12 lg:p-24">
+    
+      <div className="w-full max-w-[1400px] h-auto md:h-[80vh] min-h-[600px] bg-white shadow-2xl overflow-hidden flex flex-col md:flex-row">
         
-        <section className="relative w-full md:w-1/2 min-h-[400px] md:min-h-full">
-          <div className="absolute inset-0 z-0">
+        {/* --- IZQUIERDA: IMAGEN DE TELA Y TÍTULO --- */}
+        <section className="relative w-full md:w-1/2 h-[400px] md:h-full">
+          
+          {/* IMAGEN DE FONDO */}
+          <div className="absolute inset-0">
             <Image
-              src={categoryData.heroImage}
-              alt={categoryData.title}
+              src={`/images/imagesProducts/${mainCategorySlug}.jpg`} // Tu textura clara
+              alt={mainCategoryTitle}
               fill
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-black/10"></div>
+            {/* Overlay muy suave por si la imagen es muy blanca */}
+            <div className="absolute inset-0 bg-black/5"></div>
           </div>
-
-          <div className="relative z-10 w-full h-full flex flex-col items-center justify-center p-6">
-            <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tight drop-shadow-md text-center">
-              {categoryData.title.replace("Telas ", "")}
+          
+          {/* CONTENIDO CENTRADO (NYLON + BOTÓN) */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center z-10 p-6">
+            
+            {/* TÍTULO GIGANTE */}
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white uppercase drop-shadow-md tracking-tighter mb-8">
+              {mainCategoryTitle}
             </h1>
-
-            <div className="absolute bottom-10 left-0 w-full flex justify-center">
-              <a 
-                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-2 px-8 py-3 border-2 border-white rounded-full text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300 backdrop-blur-sm bg-black/20"
-              >
-                <MessageCircle size={20} className="fill-current" />
-                <span>Solicita Asesoría</span>
-              </a>
-            </div>
+            
+            {/* BOTÓN (Estilo Píldora Gris/Transparente) */}
+            <a 
+              href="https://wa.me/50200000000"
+              target="_blank"
+              className="flex items-center gap-2 px-8 py-3 bg-gray-600/40 backdrop-blur-sm border-2 border-white rounded-full text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300"
+            >
+              <MessageCircle size={20} className="fill-current" />
+              <span className="text-sm md:text-base">Solicita Asesoría</span>
+            </a>
           </div>
         </section>
 
-
-      
-        <section 
-          className="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-16 py-12 transition-colors duration-300"
-          style={{ backgroundColor: categoryData.color }}
-        >
-          <div className="w-full max-w-md mx-auto flex flex-col">
-            
-            <Link 
-              href={`/contacto?interes=Catalogo Completo de ${categoryData.title}`}
-              className="group w-full py-5 border-b border-white/30 flex items-center justify-center hover:bg-black/10 transition-colors"
-            >
-              <span className="text-xl md:text-2xl font-black text-white uppercase tracking-widest text-center group-hover:tracking-[0.2em] transition-all duration-300">
-                TODAS
-              </span>
-            </Link>
-
-            {categoryData.subProducts.map((prod) => (
-              <Link 
-                key={prod.id} 
-                href={`/contacto?interes=${prod.name}`}
-                className="group w-full py-5 border-b border-white/30 flex items-center justify-center hover:bg-black/10 transition-colors"
+        {/* --- DERECHA: MENÚ ROJO --- */}
+        <section className="w-full md:w-1/2 h-full bg-[#FF4040] flex flex-col justify-center items-center py-12 px-8 md:px-16">
+          
+          <div className="w-full max-w-md flex flex-col">
+            {menuOptions.map((opt, index) => (
+              <Link
+                key={opt.subSlug}
+                href={`/telas/${mainCategorySlug}/${opt.subSlug}`}
+                className={`
+                  group w-full py-5 lg:py-6 text-center transition-all duration-300 
+                  border-b border-white/40 hover:bg-white/10
+                  ${index === 0 ? "border-t border-white/40" : ""}
+                `}
               >
-                <span className="text-lg md:text-xl font-bold text-white uppercase tracking-widest text-center group-hover:scale-105 transition-transform duration-300">
-                  {prod.name}
+                <span className="text-lg md:text-xl lg:text-2xl font-bold text-white uppercase tracking-widest group-hover:tracking-[0.2em] transition-all duration-300">
+                  {opt.label}
                 </span>
               </Link>
             ))}
-
           </div>
+
         </section>
+
       </div>
+
     </main>
   );
 }

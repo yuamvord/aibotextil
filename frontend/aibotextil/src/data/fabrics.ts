@@ -35,7 +35,7 @@ export const fabricDatabase: Record<string, FabricCategory> = {
     id: "poliester",
     title: "Telas Poliéster",
     description: "Versatilidad y rendimiento.",
-    heroImage: "/images/imagesProducts/poliester.png",
+    heroImage: "/images/imagesProducts/poliester.jpg",
     color: "#79bfcf", 
     subProducts: [
       { id: "poly-100", name: "Poliéster 100%", description: "Básico fundamental.", features: ["Sublimable"] },
@@ -49,7 +49,7 @@ export const fabricDatabase: Record<string, FabricCategory> = {
     id: "spandex",
     title: "Spandex",
     description: "Elasticidad vital.",
-    heroImage: "/images/imagesProducts/spandex.png",
+    heroImage: "/images/imagesProducts/spandex.jpg",
     color: "#adabb0", 
     subProducts: [
       { id: "nylon-spandex-mix", name: "Nylon Spandex", description: "Mezcla premium.", features: ["Estiramiento"] },
@@ -71,7 +71,7 @@ export const fabricDatabase: Record<string, FabricCategory> = {
     id: "tecnologia",
     title: "Tecnología",
     description: "Tecnología avanzada",
-    heroImage: "/images/imagesProducts/tecnoTela.png",
+    heroImage: "/images/imagesProducts/tecnologia.jpg",
     color: "#2d7580", 
     subProducts: [
       { id: "jacquard-nylon", name: "Nylon Jacquard", description: "Textura suave.", features: ["Premium"] },
