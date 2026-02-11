@@ -10,7 +10,6 @@ export interface SubProduct {
 export interface FabricCategory {
   id: string;
   title: string;
-  description: string;
   heroImage: string;
   color: string;
   subProducts: SubProduct[];
@@ -20,62 +19,67 @@ export const fabricDatabase: Record<string, FabricCategory> = {
   nylon: {
     id: "nylon",
     title: "Telas Nylon",
-    description: "Resistencia superior y tacto suave.",
     heroImage: "/images/imagesProducts/D01.jpg",
     color: "#fa4647", 
     subProducts: [
-      { id: "nylon", name: "Nylon 100%", description: "Nylon 100%", features: ["Compresión"] },
-      { id: "nylon-spandex", name: "Nylon + Spandex", description: "Elasticidad premium.", features: ["Compresión"] },
-      { id: "nylon-jacquard", name: "Nylon Jacquard", description: "Texturas y diseños.", features: ["Texturizado"] },
-      { id: "nylon-tech", name: "Nylon Tecnología", description: "Tratamientos avanzados.", features: ["Tech"] },
-      { id: "nylon-reciclado", name: "Nylon Reciclado", description: "Sostenibilidad.", features: ["Eco-Friendly"] },
+      // CAMBIO CLAVE: id coincide con el Slug de la DB (fila 7)
+      { id: "nylon-100", name: "Nylon 100%", description: "Nylon 100%", features: ["Compresión"] },
+      // id coincide con Slug (fila 3)
+      { id: "spandex", name: "Nylon + Spandex", description: "Elasticidad premium.", features: ["Compresión"] },
+      // id coincide con Slug (fila 4)
+      { id: "jacquard", name: "Nylon Jacquard", description: "Texturas y diseños.", features: ["Texturizado"] },
+      // id coincide con Slug (fila 6)
+      { id: "tecnologia", name: "Nylon Tecnología", description: "Tratamientos avanzados.", features: ["Tech"] },
+      // CAMBIO CLAVE: id coincide con Slug "reciclable" (fila 5)
+      { id: "reciclable", name: "Nylon Reciclado", description: "Sostenibilidad.", features: ["Eco-Friendly"] },
     ]
   },
   poliester: {
     id: "poliester",
-    title: "Telas Poliéster",
-    description: "Versatilidad y rendimiento.",
+    title: "Telas Poliester",
     heroImage: "/images/imagesProducts/poliester.jpg",
     color: "#79bfcf", 
     subProducts: [
-      { id: "poly-100", name: "Poliéster 100%", description: "Básico fundamental.", features: ["Sublimable"] },
-      { id: "poly-spandex", name: "Poliéster + Spandex", description: "Ajuste cómodo.", features: ["Elástico"] },
-      { id: "poly-jacquard", name: "Poliéster Jacquard", description: "Diseños intrincados.", features: ["Diseño"] },
-      { id: "poly-tec", name: "Poliéster Tecnología", description: "Diseños tecnologícos.", features: ["Diseño"] },
-      { id: "poly-reciclado", name: "Poliéster Reciclado", description: "RPET.", features: ["Sostenible"] },
+      // CAMBIO CLAVE: id coincide con el Slug de la DB (fila 1)
+      { id: "poliester-100", name: "Poliester 100%", description: "Básico fundamental.", features: ["Sublimable"] },
+      { id: "spandex", name: "Poliester + Spandex", description: "Ajuste cómodo.", features: ["Elástico"] },
+      { id: "jacquard", name: "Poliester Jacquard", description: "Diseños intrincados.", features: ["Diseño"] },
+      { id: "tecnologia", name: "Poliester Tecnología", description: "Diseños tecnológicos.", features: ["Diseño"] },
+      // CAMBIO CLAVE: id es "reciclable" según tu DB
+      { id: "reciclable", name: "Poliester Reciclado", description: "RPET.", features: ["Sostenible"] },
     ]
   },
   spandex: {
     id: "spandex",
     title: "Spandex",
-    description: "Elasticidad vital.",
     heroImage: "/images/imagesProducts/spandex.jpg",
     color: "#adabb0", 
     subProducts: [
-      { id: "nylon-spandex-mix", name: "Nylon Spandex", description: "Mezcla premium.", features: ["Estiramiento"] },
-      { id: "poly-spandex-mix", name: "Poliéster Spandex", description: "Económica.", features: ["Versátil"] },
+      // Aquí buscamos telas que tengan la categoría Nylon dentro de la vista Spandex
+      { id: "nylon", name: "Nylon Spandex", description: "Mezcla premium.", features: ["Estiramiento"] },
+      { id: "poliester", name: "Poliester Spandex", description: "Económica.", features: ["Versátil"] },
+      { id: "jacquard", name: "Jacquard Spandex", description: "Jacquard.", features: ["Jacquard"] },
+      { id: "reciclable", name: "Reciclable Spandex", description: "reciclable", features: ["reciclable"] },
     ]
   },
   jacquard: {
     id: "jacquard",
     title: "Jacquard",
-    description: "Ingeniería visible.",
     heroImage: "/images/imagesProducts/jacquard.jpg",
     color: "#5da7a6", 
     subProducts: [
-      { id: "jacquard-nylon", name: "Nylon Jacquard", description: "Textura suave.", features: ["Premium"] },
-      { id: "jacquard-poly", name: "Poliéster Jacquard", description: "Máxima ventilación.", features: ["Ventilado"] },
+      { id: "nylon", name: "Nylon Jacquard", description: "Textura suave.", features: ["Premium"] },
+      { id: "poliester", name: "Poliester Jacquard", description: "Máxima ventilación.", features: ["Ventilado"] },
     ]
   },
   tecnologia: {
-    id: "tecnologia",
+    id: "tecnologia", // Ojo: en tu DB el slug es "tecnologia" (sin tilde), en el código anterior tenias 'tecnologia' ok.
     title: "Tecnología",
-    description: "Tecnología avanzada",
     heroImage: "/images/imagesProducts/tecnologia.jpg",
     color: "#2d7580", 
     subProducts: [
-      { id: "jacquard-nylon", name: "Nylon Jacquard", description: "Textura suave.", features: ["Premium"] },
-      { id: "jacquard-poly", name: "Poliéster Jacquard", description: "Máxima ventilación.", features: ["Ventilado"] },
+      { id: "nylon", name: "Nylon Tech", description: "Textura suave.", features: ["Premium"] },
+      { id: "poliester", name: "Poliester Tech", description: "Máxima ventilación.", features: ["Ventilado"] },
     ]
   }
 };
