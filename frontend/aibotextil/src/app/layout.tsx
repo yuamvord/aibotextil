@@ -1,36 +1,39 @@
 import type { Metadata } from "next";
-// import localFont... (lo que tengas aquí)
+// import localFont... 
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar"; 
-import Footer from "@/components/layout/Footer"; // <--- 1. IMPORTAR
+import Footer from "@/components/layout/Footer"; 
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import { CartProvider } from "@/context/CartContext"; 
 
 export const metadata: Metadata = {
   title: "Aibo Textil - Innovación para el deporte",
   description: "Más que telas, innovación para el deporte.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }){
   return (
     <html lang="es">
       <body className="antialiased bg-white flex flex-col min-h-screen"> 
-        {/* Nota: agregué 'flex flex-col min-h-screen' al body para asegurar 
-            que el footer siempre se vaya al fondo aunque haya poco contenido */}
         
-        <Navbar />
+        {/* EL PROVIDER DEBE ABRAZAR A TODOS LOS COMPONENTES VISIBLES */}
+        <CartProvider>
+            
+            {/* 1. Navbar dentro para que pueda leer el carrito */}
+            <Navbar />
+            
+            {/* 2. El contenido principal (children) solo una vez dentro del main */}
+            <main className="flex-grow">
+              {children}
+            </main>
+            
+            <WhatsAppButton />
+            
+            {/* 3. Footer */}
+            <Footer />
 
-        {/* El contenido principal crece para empujar el footer */}
-        <main className="flex-grow">
-          {children}
-        </main>
+        </CartProvider>
         
-        <WhatsAppButton />
-        {/* 2. AQUI VA EL FOOTER */}
-        <Footer />
       </body>
     </html>
   );

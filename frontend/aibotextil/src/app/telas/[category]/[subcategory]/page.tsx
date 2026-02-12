@@ -1,10 +1,10 @@
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import TelaCard from "@/components/telas/TelaCard";
-import { Tela } from "@/types/telas"; 
+import { Tela } from "@/types/telas";
 
 interface SubcategoryPageProps {
   params: {
@@ -16,16 +16,18 @@ interface SubcategoryPageProps {
 export async function generateMetadata({ params }: SubcategoryPageProps) {
   const cat = params.category.toUpperCase();
   const sub =
-    params.subcategory === 'todas'
-      ? 'Catálogo Completo'
-      : params.subcategory.toUpperCase().replace('-', ' ');
+    params.subcategory === "todas"
+      ? "Catálogo Completo"
+      : params.subcategory.toUpperCase().replace("-", " ");
 
   return { title: `${cat} - ${sub} | Aibo Textil` };
 }
 
-export default async function SubcategoryPage({ params }: SubcategoryPageProps) {
+export default async function SubcategoryPage({
+  params,
+}: SubcategoryPageProps) {
   // Normalizamos a minúsculas para evitar errores de mayúsculas
-  const mainCategory = params.category.toLowerCase(); 
+  const mainCategory = params.category.toLowerCase();
   const subFilter = params.subcategory.toLowerCase();
 
   // DEBUG: Esto aparecerá en los logs de Vercel (Function logs)
@@ -34,20 +36,25 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
   let whereCondition: any = {};
 
   // CASO 1: Ver TODAS las telas de la categoría principal (ej: Nylon)
-  if (subFilter === 'todas') {
+  if (subFilter === "todas") {
     whereCondition = {
       OR: [
-        { Tela_Categoria: { some: { Categorias: { Slug: { contains: mainCategory } } } } },
+        {
+          Tela_Categoria: {
+            some: { Categorias: { Slug: { contains: mainCategory } } },
+          },
+        },
         { Nombre_Tela: { contains: mainCategory } },
-        { Composicion: { contains: mainCategory } }
-      ]
+        { Composicion: { contains: mainCategory } },
+      ],
     };
-  } 
+  }
   // CASO 2: Ver una SUBCATEGORÍA específica (ej: Spandex)
   else {
     // Truco: Si el subfiltro contiene al principal (ej: "nylon-spandex"),
     // buscamos solo la parte "diferente" ("spandex") para tener más suerte en la DB.
-    const searchTerm = subFilter.replace(mainCategory, '').replace('-', '').trim() || subFilter;
+    const searchTerm =
+      subFilter.replace(mainCategory, "").replace("-", "").trim() || subFilter;
 
     whereCondition = {
       AND: [
@@ -55,12 +62,12 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
           // 1. Debe tener la subcategoría (ej: Spandex)
           Tela_Categoria: {
             some: {
-              Categorias: { 
-                 // Usamos 'contains' para que "spandex" encuentre "nylon-spandex" o "poly-spandex"
-                 Slug: { contains: searchTerm } 
-              }
-            }
-          }
+              Categorias: {
+                // Usamos 'contains' para que "spandex" encuentre "nylon-spandex" o "poly-spandex"
+                Slug: { contains: searchTerm },
+              },
+            },
+          },
         },
         {
           // 2. Y ADEMÁS debe pertenecer a la familia principal (ej: Nylon)
@@ -68,27 +75,31 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
           OR: [
             { Nombre_Tela: { contains: mainCategory } },
             { Composicion: { contains: mainCategory } },
-            { Tela_Categoria: { some: { Categorias: { Slug: { contains: mainCategory } } } } }
-          ]
-        }
-      ]
+            {
+              Tela_Categoria: {
+                some: { Categorias: { Slug: { contains: mainCategory } } },
+              },
+            },
+          ],
+        },
+      ],
     };
   }
 
-  const { db } = await import('@/lib/db');
+  const { db } = await import("@/lib/db");
 
   const telasRaw = await db.telas.findMany({
     where: whereCondition,
-    orderBy: { Id_Tela: 'desc' },
+    orderBy: { Id_Tela: "desc" },
     include: {
       Tela_Categoria: {
-        include: { Categorias: true }
-      }
-    }
+        include: { Categorias: true },
+      },
+    },
   });
 
   const telasFiltradas: Tela[] = telasRaw.map((t: any) => {
-    let cleanImage = "/images/placeholder.jpg"; 
+    let cleanImage = "/images/placeholder.jpg";
 
     if (t.Url_Imagen) {
       let tempUrl = t.Url_Imagen.replace(/\\/g, "/");
@@ -107,7 +118,7 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
       imagenUrl: cleanImage,
       codigo: t.Codigo_Aibo,
       precio: 0,
-      categorias: []
+      categorias: [],
     };
   });
 
@@ -120,7 +131,8 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
             className="md:absolute md:left-0 flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:bg-white/20 px-4 py-2 rounded-full transition-colors"
           >
             <ArrowLeft size={18} />
-            <span className="hidden md:inline">Volver a </span>{params.category}
+            <span className="hidden md:inline">Volver a </span>
+            {params.category}
           </Link>
 
           <div className="text-center flex-1">
@@ -128,7 +140,9 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
               Catálogo / {params.category}
             </span>
             <h1 className="text-2xl md:text-4xl font-black uppercase tracking-widest leading-none">
-              {subFilter === 'todas' ? 'Colección Completa' : subFilter.replace('-', ' ')}
+              {subFilter === "todas"
+                ? "Colección Completa"
+                : subFilter.replace("-", " ")}
             </h1>
           </div>
 
@@ -140,7 +154,13 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
         {telasFiltradas.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12">
             {telasFiltradas.map((tela) => (
-              <TelaCard key={tela.id} tela={tela} />
+              <Link
+                key={tela.id}
+                href={`/telas/${params.category}/${params.subcategory}/${tela.id}`}
+                className="group block transition-transform hover:-translate-y-2 duration-300"
+              >
+                <TelaCard tela={tela} />
+              </Link>
             ))}
           </div>
         ) : (
@@ -154,7 +174,10 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
             </p>
             {/* DEBUG VISUAL: Solo para ti, bórralo luego si quieres */}
             <p className="text-xs text-red-400 mt-4">
-               Debug: Busqué Slug que contenga "{subFilter.replace(mainCategory, '').replace('-', '').trim() || subFilter}"
+              Debug: Busqué Slug que contenga "
+              {subFilter.replace(mainCategory, "").replace("-", "").trim() ||
+                subFilter}
+              "
             </p>
           </div>
         )}

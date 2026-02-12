@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ShoppingCart } from "lucide-react"; // Agregamos ShoppingCart
+import { useCart } from "@/context/CartContext"; // Importamos el hook del carrito
 
-// Estructura de enlaces ACTUALIZADA con submenús en TECNOLOGÍAS y TELAS
 const navLinks = [
   { name: "INICIO", href: "/" },
   { name: "QUIENES SOMOS", href: "/quienes-somos" },
@@ -34,6 +34,7 @@ const navLinks = [
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { cart } = useCart(); // Usamos el contexto para ver cuántos items hay
 
   return (
     <header className="sticky top-0 z-50 w-full bg-aibo-red text-white shadow-md">
@@ -46,19 +47,16 @@ const Navbar = () => {
           </div>
 
           {/* 2. MENÚ DE ESCRITORIO */}
-          <nav className="hidden md:flex w-full justify-center space-x-6 xl:space-x-10">
+          <nav className="hidden md:flex w-full justify-center space-x-6 xl:space-x-10 items-center">
             {navLinks.map((link) => {
-              // CASO A: SI TIENE SUBMENÚ (Dropdown)
+              // CASO A: SI TIENE SUBMENÚ
               if (link.submenu) {
                 return (
                   <div key={link.name} className="relative group z-50">
-                    {/* Botón principal */}
                     <button className="flex items-center gap-1 py-2 text-sm font-bold uppercase tracking-widest transition-colors hover:text-gray-100 group-hover:text-gray-200 focus:outline-none">
                       {link.name}
                       <ChevronDown size={16} className="transition-transform duration-300 group-hover:rotate-180" />
                     </button>
-
-                    {/* El Menú Desplegable */}
                     <div className="absolute left-0 top-full pt-4 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
                       <div className="bg-white rounded-md shadow-xl py-2 overflow-hidden border-t-4 border-red-800">
                         {link.submenu.map((subLink) => (
@@ -88,10 +86,31 @@ const Navbar = () => {
                 </Link>
               );
             })}
+
+            {/* --- ICONO DEL CARRITO (Solo Escritorio) --- */}
+            <Link href="/carrito" className="relative group p-2 hover:bg-white/10 rounded-full transition-colors ml-4">
+              <ShoppingCart size={24} />
+              {cart.length > 0 && (
+                <span className="absolute -top-1 -right-1 bg-white text-aibo-red text-xs font-bold h-5 w-5 flex items-center justify-center rounded-full shadow-sm">
+                  {cart.length}
+                </span>
+              )}
+            </Link>
+
           </nav>
 
-          {/* 3. BOTÓN HAMBURGUESA (Móvil) */}
-          <div className="md:hidden">
+          {/* 3. BOTÓNES MÓVIL (Hamburguesa + Carrito) */}
+          <div className="md:hidden flex items-center gap-4">
+             {/* Icono Carrito Móvil */}
+             <Link href="/carrito" className="relative p-1">
+              <ShoppingCart size={24} />
+              {cart.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-white text-aibo-red text-xs font-bold h-5 w-5 flex items-center justify-center rounded-full">
+                  {cart.length}
+                </span>
+              )}
+            </Link>
+
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 text-white hover:bg-red-600 rounded-md transition-colors focus:outline-none"
@@ -102,14 +121,13 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* 4. MENÚ DESPLEGABLE MÓVIL (Contenido) */}
+      {/* 4. MENÚ DESPLEGABLE MÓVIL */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-aibo-red border-t border-red-400 max-h-[80vh] overflow-y-auto shadow-inner">
           <div className="space-y-1 px-4 pb-8 pt-4">
             {navLinks.map((link) => (
               <div key={link.name}>
                 {link.submenu ? (
-                  // Opción con submenú en móvil
                   <div className="space-y-1 mt-2 mb-2">
                     <div className="px-3 py-2 text-base font-black uppercase tracking-widest text-red-100 border-b border-red-400/30">
                       {link.name}
@@ -128,7 +146,6 @@ const Navbar = () => {
                     </div>
                   </div>
                 ) : (
-                  // Opción normal en móvil
                   <Link
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
@@ -139,6 +156,14 @@ const Navbar = () => {
                 )}
               </div>
             ))}
+             {/* Link extra al carrito en el menú móvil */}
+             <Link
+                href="/carrito"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block rounded-md px-3 py-3 mt-4 bg-white text-aibo-red text-center text-base font-bold uppercase tracking-widest hover:bg-gray-100 transition-colors"
+              >
+                Ver Mi Cotización ({cart.length})
+              </Link>
           </div>
         </div>
       )}
