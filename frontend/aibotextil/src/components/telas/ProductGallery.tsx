@@ -64,7 +64,7 @@ export default function ProductGallery({ mainImage, extraImages, title }: Produc
             className={`object-cover transition-transform duration-200 ease-out`}
             style={{ 
               transformOrigin: transformOrigin, 
-              transform: isHovered ? "scale(2)" : "scale(1)"
+              transform: isHovered ? "scale(1.07)" : "scale(1)"
             }}
             priority
             onError={() => handleImageError(selectedImage)}
