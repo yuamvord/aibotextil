@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Trash2, Send, ArrowLeft } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+// 1. IMPORTAMOS LA CALCULADORA
+import FabricCalculator from "@/components/cart/FabricCalculator"; 
 
 export default function CarritoPage() {
   const { cart, removeFromCart } = useCart();
@@ -65,14 +67,14 @@ ${itemsText}
         {cart.length === 0 ? (
           <div className="text-center py-20 bg-white rounded-2xl shadow-sm">
             <p className="text-gray-400 text-xl mb-6">No has agregado telas todavía.</p>
-            <Link href="/" className="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full uppercase tracking-wider hover:bg-blue-700">
-                Regresar al inicio
+            <Link href="/telas" className="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full uppercase tracking-wider hover:bg-blue-700">
+                Ver Catálogo de Telas
             </Link>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            {/* LISTA DE ITEMS (Izquierda) */}
+            {/* LISTA DE ITEMS (Izquierda - Ocupa 2 columnas) */}
             <div className="lg:col-span-2 space-y-4">
               {cart.map((item) => (
                 <div key={item.id} className="bg-white p-4 rounded-xl shadow-sm flex items-center gap-4 border border-gray-100">
@@ -93,54 +95,60 @@ ${itemsText}
               ))}
             </div>
 
-            {/* FORMULARIO (Derecha) */}
-            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 h-fit sticky top-24">
-              <h2 className="text-xl font-bold mb-4 uppercase">Datos de Contacto</h2>
-              <form onSubmit={handleSendWhatsapp} className="space-y-4">
-                <div>
-                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Tu Nombre</label>
-                    <input 
-                        required
-                        type="text" 
-                        name="nombre"
-                        value={formData.nombre}
-                        onChange={handleChange}
-                        className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                        placeholder="Ej: Juan Pérez"
-                    />
-                </div>
-                <div>
-                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Empresa (Opcional)</label>
-                    <input 
-                        type="text" 
-                        name="empresa"
-                        value={formData.empresa}
-                        onChange={handleChange}
-                        className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                        placeholder="Ej: Confecciones S.A."
-                    />
-                </div>
-                <div>
-                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Comentarios</label>
-                    <textarea 
-                        name="mensaje"
-                        value={formData.mensaje}
-                        onChange={handleChange}
-                        rows={3}
-                        className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                        placeholder="¿Alguna pregunta específica sobre estas telas?"
-                    />
-                </div>
-
-                <button 
-                    type="submit"
-                    className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 mt-4"
-                >
-                    <Send size={20} />
-                    <span>ENVIAR POR WHATSAPP</span>
-                </button>
+            {/* BARRA LATERAL (Derecha - Ocupa 1 columna) */}
+            <div className="space-y-6">
                 
-              </form>
+                {/* 2. AQUÍ INSERTAMOS LA CALCULADORA */}
+                <FabricCalculator />
+
+                {/* FORMULARIO DE CONTACTO */}
+                <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 h-fit sticky top-24">
+                <h2 className="text-xl font-bold mb-4 uppercase text-gray-800">Finalizar Cotización</h2>
+                <form onSubmit={handleSendWhatsapp} className="space-y-4">
+                    <div>
+                        <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Tu Nombre</label>
+                        <input 
+                            required
+                            type="text" 
+                            name="nombre"
+                            value={formData.nombre}
+                            onChange={handleChange}
+                            className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                            placeholder="Ej: Juan Pérez"
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Empresa (Opcional)</label>
+                        <input 
+                            type="text" 
+                            name="empresa"
+                            value={formData.empresa}
+                            onChange={handleChange}
+                            className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                            placeholder="Ej: Confecciones S.A."
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Comentarios</label>
+                        <textarea 
+                            name="mensaje"
+                            value={formData.mensaje}
+                            onChange={handleChange}
+                            rows={3}
+                            className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                            placeholder="Ej: Necesito saber si tienen stock..."
+                        />
+                    </div>
+
+                    <button 
+                        type="submit"
+                        className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 mt-4"
+                    >
+                        <Send size={20} />
+                        <span>ENVIAR POR WHATSAPP</span>
+                    </button>
+                </form>
+                </div>
             </div>
 
           </div>

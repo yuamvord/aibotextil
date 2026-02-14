@@ -62,7 +62,7 @@ export default function CategoryMenuPage({ params }: PageProps) {
           </div>
 
           {/* Botón Volver (Opcional, buen UX) */}
-          <Link href="/telas" className="absolute top-6 left-6 z-20 text-white hover:text-gray-200 transition-colors">
+          <Link href="/" className="absolute top-6 left-6 z-20 text-white hover:text-gray-200 transition-colors">
              <ArrowLeft size={32} />
           </Link>
 

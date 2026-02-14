@@ -6,6 +6,16 @@ import { ArrowLeft } from "lucide-react";
 import TelaCard from "@/components/telas/TelaCard";
 import { Tela } from "@/types/telas";
 
+// --- TUS COLORES ---
+const headerColors = [
+  "#fa4647",
+  "#92cddb",
+  "#adabb0",
+  "#5da7a6",
+  "#ff7677",
+  "#94bbce",
+];
+
 interface SubcategoryPageProps {
   params: {
     category: string;
@@ -26,16 +36,19 @@ export async function generateMetadata({ params }: SubcategoryPageProps) {
 export default async function SubcategoryPage({
   params,
 }: SubcategoryPageProps) {
-  // Normalizamos a minúsculas para evitar errores de mayúsculas
+  // 1. ELEGIR COLOR ALEATORIO
+  // Como usamos "force-dynamic", esto se ejecuta cada vez que alguien entra
+  const randomColor = headerColors[Math.floor(Math.random() * headerColors.length)];
+
+  // Normalizamos a minúsculas
   const mainCategory = params.category.toLowerCase();
   const subFilter = params.subcategory.toLowerCase();
 
-  // DEBUG: Esto aparecerá en los logs de Vercel (Function logs)
   console.log(`🔎 Buscando: Main=${mainCategory} | Sub=${subFilter}`);
 
   let whereCondition: any = {};
 
-  // CASO 1: Ver TODAS las telas de la categoría principal (ej: Nylon)
+  // CASO 1: Ver TODAS
   if (subFilter === "todas") {
     whereCondition = {
       OR: [
@@ -49,29 +62,23 @@ export default async function SubcategoryPage({
       ],
     };
   }
-  // CASO 2: Ver una SUBCATEGORÍA específica (ej: Spandex)
+  // CASO 2: Ver SUBCATEGORÍA
   else {
-    // Truco: Si el subfiltro contiene al principal (ej: "nylon-spandex"),
-    // buscamos solo la parte "diferente" ("spandex") para tener más suerte en la DB.
     const searchTerm =
       subFilter.replace(mainCategory, "").replace("-", "").trim() || subFilter;
 
     whereCondition = {
       AND: [
         {
-          // 1. Debe tener la subcategoría (ej: Spandex)
           Tela_Categoria: {
             some: {
               Categorias: {
-                // Usamos 'contains' para que "spandex" encuentre "nylon-spandex" o "poly-spandex"
                 Slug: { contains: searchTerm },
               },
             },
           },
         },
         {
-          // 2. Y ADEMÁS debe pertenecer a la familia principal (ej: Nylon)
-          // Esto evita que salgan telas de Poliéster Spandex cuando estás en Nylon
           OR: [
             { Nombre_Tela: { contains: mainCategory } },
             { Composicion: { contains: mainCategory } },
@@ -124,29 +131,40 @@ export default async function SubcategoryPage({
 
   return (
     <main className="min-h-screen bg-gray-50">
-      <header className="w-full bg-blue-900 text-white py-6 px-6 shadow-lg relative z-10">
-        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4 relative">
+      {/* CAMBIOS EN EL HEADER:
+         1. Quitamos bg-blue-900
+         2. Agregamos style={{ backgroundColor: randomColor }}
+      */}
+      <header 
+        className="w-full text-white py-6 px-6 shadow-lg relative z-10 transition-colors duration-500 ease-in-out"
+        style={{ backgroundColor: randomColor }}
+      >
+        <div className="container mx-auto flex flex-col md:flex-row items-center justify-center relative">
+          
+          {/* BOTÓN VOLVER (Posicionado Absolutamente a la izquierda en PC) */}
           <Link
-            href={`/telas/${params.category}`} // Usamos params directo para mantener link limpio
-            className="md:absolute md:left-0 flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:bg-white/20 px-4 py-2 rounded-full transition-colors"
+            href={`/telas/${params.category}`}
+            className="self-start md:self-auto md:absolute md:left-0 flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:bg-white/20 px-4 py-2 rounded-full transition-colors"
           >
             <ArrowLeft size={18} />
             <span className="hidden md:inline">Volver a </span>
             {params.category}
           </Link>
 
-          <div className="text-center flex-1">
-            <span className="block text-xs md:text-sm font-bold opacity-70 uppercase tracking-[0.15em] mb-1">
+          {/* TÍTULO (Centrado perfectamente porque ya no hay espaciador a la derecha) */}
+          <div className="text-center w-full">
+            <span className="block text-xs md:text-sm font-bold opacity-80 uppercase tracking-[0.15em] mb-1 drop-shadow-sm">
               Catálogo / {params.category}
             </span>
-            <h1 className="text-2xl md:text-4xl font-black uppercase tracking-widest leading-none">
+            <h1 className="text-2xl md:text-4xl font-black uppercase tracking-widest leading-none drop-shadow-md">
               {subFilter === "todas"
                 ? "Colección Completa"
                 : subFilter.replace("-", " ")}
             </h1>
           </div>
 
-          <div className="w-32 hidden md:block"></div>
+          {/* ELIMINÉ EL DIV VACÍO DE LA DERECHA PARA QUE EL CENTRADO SEA REAL */}
+          
         </div>
       </header>
 
@@ -171,13 +189,6 @@ export default async function SubcategoryPage({
             </p>
             <p className="text-gray-500 font-medium">
               No encontramos telas "{subFilter}" dentro de "{mainCategory}".
-            </p>
-            {/* DEBUG VISUAL: Solo para ti, bórralo luego si quieres */}
-            <p className="text-xs text-red-400 mt-4">
-              Debug: Busqué Slug que contenga "
-              {subFilter.replace(mainCategory, "").replace("-", "").trim() ||
-                subFilter}
-              "
             </p>
           </div>
         )}
