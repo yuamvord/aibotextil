@@ -26,6 +26,7 @@ const Tiktok = ({ size = 24, className = "" }: { size?: number, className?: stri
     <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
   </svg>
 );
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -33,18 +34,17 @@ const Footer = () => {
     <footer className="bg-neutral-900 text-gray-300 font-light">
       {/* --- SECCIÓN PRINCIPAL (GRID) --- */}
       <div className="container mx-auto px-6 py-16">
+        
+        {/* AQUÍ EMPIEZA LA GRILLA DE 4 COLUMNAS */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* COLUMNA 1: MARCA Y DESCRIPCIÓN */}
           <div className="space-y-6">
-            {/* Logo en versión blanco/negativo si tienes, si no el normal */}
             <div className="relative w-40 h-20">
-              {/* Nota: Idealmente usa una versión del logo con letras blancas para fondo oscuro.
-                   Si no tienes, CSS filter brightness puede ayudar o simplemente usa el normal. */}
               <Image
                 src="/images/logo-aibo.png"
                 alt="Aibo Textil"
                 fill
-                className="object-contain brightness-0 invert" // ESTO VUELVE EL LOGO BLANCO AUTOMÁTICAMENTE
+                className="object-contain brightness-0 invert"
               />
             </div>
             <p className="text-sm leading-relaxed text-gray-400">
@@ -52,29 +52,16 @@ const Footer = () => {
               calidad y la sostenibilidad en cada fibra.
             </p>
             <div className="flex gap-4 pt-2">
-              {/* Redes Sociales con Hover Rojo */}
-              <Link
-                href="#"
-                className="hover:text-aibo-red transition-colors duration-300"
-              >
+              <Link href="#" className="hover:text-aibo-red transition-colors duration-300">
                 <Facebook size={20} />
               </Link>
-              <Link
-                href="#"
-                className="hover:text-aibo-red transition-colors duration-300"
-              >
+              <Link href="#" className="hover:text-aibo-red transition-colors duration-300">
                 <Instagram size={20} />
               </Link>
-              <Link
-                href="#"
-                className="hover:text-aibo-red transition-colors duration-300"
-              >
+              <Link href="#" className="hover:text-aibo-red transition-colors duration-300">
                 <Linkedin size={20} />
               </Link>
-              <Link
-                href="#"
-                className="hover:text-aibo-red transition-colors duration-300"
-              >
+              <Link href="#" className="hover:text-aibo-red transition-colors duration-300">
                 <Tiktok size={20} />
               </Link>
             </div>
@@ -87,34 +74,22 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link
-                  href="/"
-                  className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block"
-                >
+                <Link href="/" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
                   Inicio
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/quienes-somos"
-                  className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block"
-                >
+                <Link href="/quienes-somos" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
                   Quiénes Somos
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/tecnologias"
-                  className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block"
-                >
+                <Link href="/tecnologias" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
                   Tecnologías
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/blog"
-                  className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block"
-                >
+                <Link href="/blog" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
                   Blog & Noticias
                 </Link>
               </li>
@@ -128,34 +103,22 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link
-                  href="/productos/nylon"
-                  className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block"
-                >
+                <Link href="/productos/nylon" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
                   Nylon
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/productos/poliester"
-                  className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block"
-                >
+                <Link href="/productos/poliester" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
                   Poliéster
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/productos/spandex"
-                  className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block"
-                >
+                <Link href="/productos/spandex" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
                   Spandex
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/productos/jacquard"
-                  className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block"
-                >
+                <Link href="/productos/jacquard" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
                   Jacquard
                 </Link>
               </li>
@@ -182,16 +145,25 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-aibo-red shrink-0" />
-                <a
-                  href="mailto:aibotextil@hotmail.com"
-                  className="hover:text-white transition-colors"
-                >
+                <a href="mailto:aibotextil@hotmail.com" className="hover:text-white transition-colors">
                   aibotextil@hotmail.com
                 </a>
               </li>
             </ul>
           </div>
+        </div> 
+        {/* FIN DEL DIV GRID (Aquí cerramos las columnas) */}
+
+        {/* --- VERSÍCULO CENTRADO (Fuera del grid, pero dentro del container) --- */}
+        <div className="w-full flex justify-center mt-12 pt-8 border-t border-neutral-800/50">
+          <Link
+            href="/"
+            className="text-gray-500 hover:text-white transition-colors text-sm font-medium tracking-widest uppercase"
+          >
+            <em>Mateo 19:26</em>
+          </Link>
         </div>
+
       </div>
 
       {/* --- BARRA INFERIOR (COPYRIGHT) --- */}
@@ -202,23 +174,11 @@ const Footer = () => {
           </p>
 
           <div className="flex gap-6">
-            <Link
-              href="/privacidad"
-              className="hover:text-white transition-colors"
-            >
+            <Link href="/privacidad" className="hover:text-white transition-colors">
               Política de Privacidad
             </Link>
-            <Link
-              href="/terminos"
-              className="hover:text-white transition-colors"
-            >
+            <Link href="/terminos" className="hover:text-white transition-colors">
               Términos y Condiciones
-            </Link>
-            <Link
-              href="/"
-              className="hover:text-white transition-colors text-base"
-            >
-              <em>Mateo 19:26</em>
             </Link>
           </div>
         </div>

@@ -81,5 +81,15 @@ export const fabricDatabase: Record<string, FabricCategory> = {
       { id: "nylon", name: "Nylon Tecnología", description: "Textura suave.", features: ["Premium"] },
       { id: "poliester", name: "Poliester Tecnología", description: "Máxima ventilación.", features: ["Ventilado"] },
     ]
+  },
+  reciclable: {
+    id: "reciclable", 
+    title: "Reciclable",
+    heroImage: "/images/imagesProducts/tecnologia.jpg",
+    color: "#2d7580", 
+    subProducts: [
+      { id: "nylon", name: "Nylon Reciclable", description: "Textura suave.", features: ["Premium"] },
+      { id: "poliester", name: "Poliester Reciclable", description: "Máxima ventilación.", features: ["Ventilado"] },
+    ]
   }
 };

@@ -64,43 +64,53 @@ ${itemsText}
             </h1>
         </div>
 
-        {cart.length === 0 ? (
-          <div className="text-center py-20 bg-white rounded-2xl shadow-sm">
-            <p className="text-gray-400 text-xl mb-6">No has agregado telas todavía.</p>
-            <Link href="/telas" className="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full uppercase tracking-wider hover:bg-blue-700">
-                Ver Catálogo de Telas
-            </Link>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            {/* LISTA DE ITEMS (Izquierda - Ocupa 2 columnas) */}
-            <div className="lg:col-span-2 space-y-4">
-              {cart.map((item) => (
-                <div key={item.id} className="bg-white p-4 rounded-xl shadow-sm flex items-center gap-4 border border-gray-100">
-                  <div className="relative w-20 h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden">
-                    <Image src={item.image} alt={item.name} fill className="object-cover" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-gray-900 uppercase">{item.name}</h3>
-                    <p className="text-sm text-gray-500">Código: {item.code}</p>
-                  </div>
-                  <button 
-                    onClick={() => removeFromCart(item.id)}
-                    className="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-full transition-colors"
-                  >
-                    <Trash2 size={20} />
-                  </button>
+            {/* COLUMNA IZQUIERDA: LISTA DE ITEMS + CALCULADORA */}
+            <div className="lg:col-span-2 space-y-6">
+              
+              {/* 1. LISTA DE TELAS (Solo si hay items) */}
+              {cart.length > 0 ? (
+                 <div className="space-y-4">
+                  {cart.map((item) => (
+                    <div key={item.id} className="bg-white p-4 rounded-xl shadow-sm flex items-center gap-4 border border-gray-100">
+                      <div className="relative w-20 h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden">
+                        <Image src={item.image} alt={item.name} fill className="object-cover" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-bold text-gray-900 uppercase">{item.name}</h3>
+                        <p className="text-sm text-gray-500">Código: {item.code}</p>
+                      </div>
+                      <button 
+                        onClick={() => removeFromCart(item.id)}
+                        className="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-full transition-colors"
+                      >
+                        <Trash2 size={20} />
+                      </button>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              ) : (
+                /* MENSAJE DE CARRITO VACÍO (Si no hay items) */
+                <div className="text-center py-10 bg-white rounded-2xl shadow-sm border border-dashed border-gray-300">
+                    <p className="text-gray-400 text-lg mb-4">Tu lista está vacía actualmente.</p>
+                    <Link href="/telas" className="inline-block text-blue-600 font-bold hover:underline uppercase text-sm tracking-wider">
+                        Ir al Catálogo de Telas
+                    </Link>
+                </div>
+              )}
+
+              {/* 2. CALCULADORA (Siempre visible y debajo de las telas) */}
+              {/* Al estar en este div, si agregas telas arriba, esto baja automáticamente */}
+              <div className="pt-4">
+                 <FabricCalculator />
+              </div>
+
             </div>
 
-            {/* BARRA LATERAL (Derecha - Ocupa 1 columna) */}
+            {/* COLUMNA DERECHA: FORMULARIO (Sidebar fijo) */}
             <div className="space-y-6">
                 
-                {/* 2. AQUÍ INSERTAMOS LA CALCULADORA */}
-                <FabricCalculator />
-
                 {/* FORMULARIO DE CONTACTO */}
                 <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 h-fit sticky top-24">
                 <h2 className="text-xl font-bold mb-4 uppercase text-gray-800">Finalizar Cotización</h2>
@@ -142,17 +152,28 @@ ${itemsText}
 
                     <button 
                         type="submit"
-                        className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 mt-4"
+                        disabled={cart.length === 0} // Deshabilitamos si no hay telas
+                        className={`w-full font-bold py-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 mt-4
+                            ${cart.length === 0 
+                                ? "bg-gray-300 text-gray-500 cursor-not-allowed" 
+                                : "bg-green-600 hover:bg-green-700 text-white"
+                            }
+                        `}
                     >
                         <Send size={20} />
                         <span>ENVIAR POR WHATSAPP</span>
                     </button>
+                    
+                    {cart.length === 0 && (
+                        <p className="text-xs text-center text-red-400 mt-2">
+                            Agrega telas para poder enviar.
+                        </p>
+                    )}
                 </form>
                 </div>
             </div>
 
-          </div>
-        )}
+        </div>
 
       </div>
     </main>

@@ -16,7 +16,8 @@ const navLinks = [
       { name: "Poliéster", href: "/telas/poliester" },
       { name: "Spandex", href: "/telas/spandex" },
       { name: "Jacquard", href: "/telas/jacquard" },
-      { name: "Tecnología", href: "/telas/tecnologia" }
+      { name: "Tecnología", href: "/telas/tecnologia" },
+      { name: "Reciclable", href: "/telas/reciclable" }
     ]
   },
   {name: "USOS", href: "/usos"},
