@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { MessageCircle, Scale, Ruler, Layers, ArrowLeft, Home } from "lucide-react";
+import { MessageCircle, Scale, Ruler, Layers, ArrowLeft, Home, Printer, FileText } from "lucide-react";
 import { db } from "@/lib/db";
 import ProductGallery from "@/components/telas/ProductGallery";
 import AddToCartBtn from "@/components/telas/AddToCartBtn";
@@ -13,7 +13,6 @@ interface ProductPageProps {
   };
 }
 
-// Función auxiliar para limpiar URLs
 function cleanImageUrl(url: string | null) {
   if (!url) return "/images/placeholder.jpg";
   let temp = url.replace(/\\/g, "/");
@@ -22,7 +21,6 @@ function cleanImageUrl(url: string | null) {
   return temp;
 }
 
-// Función para formatear texto (ej: "nylon-spandex" -> "NYLON SPANDEX")
 const formatText = (text: string) => text.replace(/-/g, " ").toUpperCase();
 
 export default async function ProductPage({ params }: ProductPageProps) {
@@ -30,22 +28,48 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   if (isNaN(telaId)) return notFound();
 
-  // 1. Buscamos la tela
+  // 1. CONSULTA A LA DB
   const tela = await db.telas.findUnique({
     where: { Id_Tela: telaId },
     include: {
       tela_imagenes: { orderBy: { Orden: 'asc' } },
-      Tela_Categoria: { include: { Categorias: true } }
+      Tela_Categoria: { include: { Categorias: true } },
+      
+      // Traemos TODAS las relaciones del puente
+      Telas_Desc: {
+        include: {
+          Descripcion: true 
+        }
+      } 
     }
   });
 
   if (!tela) return notFound();
 
-  // 2. Preparamos datos
   const mainImage = cleanImageUrl(tela.Url_Imagen);
-  const galleryImages = tela.tela_imagenes.map(img => cleanImageUrl(img.Imagen_Url));
+  const galleryImages = tela.tela_imagenes.map((img: any) => cleanImageUrl(img.Imagen_Url));
 
-  // Link WhatsApp
+  // 2. OBTENER TODAS LAS DESCRIPCIONES (LÓGICA CORREGIDA)
+  // Mapeamos el array Telas_Desc para extraer todos los 'Tag'
+  const descripciones: string[] = [];
+
+  if (tela.Telas_Desc && tela.Telas_Desc.length > 0) {
+     tela.Telas_Desc.forEach((puente: any) => {
+        if (puente.Descripcion && puente.Descripcion.Tag) {
+           descripciones.push(puente.Descripcion.Tag);
+        }
+     });
+  }
+
+  // Si no hay ninguna, ponemos un texto por defecto
+  if (descripciones.length === 0) {
+      descripciones.push("Sin descripción detallada.");
+  }
+
+  // Lógica de Sublimado
+  const sublimadoRaw = (tela as any).Sublimado || "No especificado";
+  const esSublimable = !sublimadoRaw.toLowerCase().includes("no sublimable");
+
   const phone = "50200000000"; 
   const message = `Hola Aibo Textil, me interesa cotizar la tela: *${tela.Nombre_Corto}* (Código: ${tela.Codigo_Aibo}).`;
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
@@ -53,11 +77,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <main className="min-h-screen bg-white pb-20">
       
-      {/* --- NUEVA BARRA DE NAVEGACIÓN SUPERIOR (Sticky) --- */}
+      {/* HEADER */}
       <div className="sticky top-20 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
         <div className="container mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
-            
-            {/* BOTÓN GRANDE DE REGRESAR */}
             <Link 
                 href={`/telas/${params.category}/${params.subcategory}`}
                 className="group flex items-center gap-3 text-gray-600 hover:text-blue-900 transition-colors"
@@ -73,7 +95,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </div>
             </Link>
 
-            {/* MIGA DE PAN (Breadcrumb) - Visible en escritorio */}
             <div className="hidden md:flex items-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-wider">
                 <Link href="/telas" className="hover:text-blue-600 flex items-center gap-1">
                     <Home size={12} /> Catálogo
@@ -102,10 +123,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
              />
           </div>
 
-          {/* INFORMACIÓN */}
+          {/* INFO */}
           <div className="flex flex-col pt-2">
             
-            <div className="mb-8 border-b border-gray-100 pb-6">
+            <div className="mb-6 border-b border-gray-100 pb-6">
                 <div className="flex flex-wrap gap-2 mb-4">
                     <span className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
                         {tela.Codigo_Aibo || "S/C"}
@@ -113,14 +134,27 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <span className="bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                         {formatText(params.category)}
                     </span>
+                    {esSublimable && (
+                        <span className="bg-orange-100 text-orange-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1">
+                            <Printer size={10} /> Sublimable
+                        </span>
+                    )}
                 </div>
                 
                 <h1 className="text-3xl md:text-5xl font-black text-gray-900 uppercase tracking-tight mb-3">
                     {tela.Nombre_Corto}
                 </h1>
-                <p className="text-gray-500 text-lg font-medium leading-relaxed">
-                    {tela.Nombre_Tela}
-                </p>
+                
+                {/* CAJA DE DESCRIPCIONES (Renderiza todas las que existan) */}
+                <div className="mt-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
+                    {descripciones.map((desc, index) => (
+                        <div key={index} className="flex gap-3 mb-3 last:mb-0">
+                            <FileText className="shrink-0 text-blue-400 mt-1" size={20} />
+                            <p className="text-gray-600 text-lg leading-relaxed">{desc}</p>
+                        </div>
+                    ))}
+                </div>
+
             </div>
 
             {/* ESPECIFICACIONES */}
@@ -141,16 +175,30 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <p className="text-xl font-bold text-gray-800">{tela.Ancho || "N/A"}</p>
                 </div>
 
-                <div className="p-5 bg-gray-50 rounded-xl border border-gray-100 col-span-2 hover:border-blue-200 transition-colors">
+                <div className="p-5 bg-gray-50 rounded-xl border border-gray-100 hover:border-blue-200 transition-colors">
                     <div className="flex items-center gap-2 text-gray-400 mb-2">
                         <Layers size={18} />
                         <span className="text-xs font-bold uppercase tracking-wider">Composición</span>
                     </div>
-                    <p className="text-xl font-bold text-gray-800">{tela.Composicion || "N/A"}</p>
+                    <p className="text-base font-bold text-gray-800 leading-tight">{tela.Composicion || "N/A"}</p>
+                </div>
+
+                <div className={`p-5 rounded-xl border transition-colors flex flex-col justify-center
+                    ${esSublimable ? 'bg-orange-50 border-orange-100 hover:border-orange-300' : 'bg-gray-100 border-gray-200'}
+                `}>
+                    <div className="flex items-center gap-2 text-gray-400 mb-2">
+                        <Printer size={18} className={esSublimable ? "text-orange-400" : "text-gray-400"} />
+                        <span className={`text-xs font-bold uppercase tracking-wider ${esSublimable ? "text-orange-800/60" : "text-gray-500"}`}>
+                            Sublimación
+                        </span>
+                    </div>
+                    <p className={`text-xl font-bold ${esSublimable ? "text-orange-700" : "text-gray-500"}`}>
+                        {sublimadoRaw}
+                    </p>
                 </div>
             </div>
 
-            {/* ACCIONES */}
+            {/* BOTONES */}
             <div className="flex flex-col sm:flex-row gap-4 mt-auto">
                 <a 
                     href={whatsappUrl}
@@ -162,7 +210,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <span className="uppercase tracking-widest text-sm md:text-base">Cotizar WhatsApp</span>
                 </a>
 
-                {/* BOTÓN CARRITO FUNCIONAL */}
                 <AddToCartBtn 
                   item={{
                     id: tela.Id_Tela,
