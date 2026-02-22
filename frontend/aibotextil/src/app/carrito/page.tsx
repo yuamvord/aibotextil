@@ -94,8 +94,8 @@ ${itemsText}
                 /* MENSAJE DE CARRITO VACÍO (Si no hay items) */
                 <div className="text-center py-10 bg-white rounded-2xl shadow-sm border border-dashed border-gray-300">
                     <p className="text-gray-400 text-lg mb-4">Tu lista está vacía actualmente.</p>
-                    <Link href="/telas" className="inline-block text-blue-600 font-bold hover:underline uppercase text-sm tracking-wider">
-                        Ir al Catálogo de Telas
+                    <Link href="/" className="inline-block text-blue-600 font-bold hover:underline uppercase text-sm tracking-wider">
+                        Ir a la página de inicio
                     </Link>
                 </div>
               )}

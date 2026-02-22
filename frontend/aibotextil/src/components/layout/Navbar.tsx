@@ -26,7 +26,7 @@ const navLinks = [
     submenu: [
       { name: "Sostenibilidad", href: "/sostenibilidad" },
       { name: "Rendimiento Deportivo", href: "/rendimiento" },
-      { name: "Nuestras Certificaciones", href: "/certificaciones" }
+      { name: "Certificaciones", href: "/certificaciones" }
     ]
   },
   { name: "BLOG", href: "/blog" },

@@ -52,7 +52,7 @@ export default function CategoryMenuPage({ params }: PageProps) {
             </h1>
             
             <a 
-              href="https://wa.me/50200000000"
+              href="https://wa.me/50230063365" 
               target="_blank"
               className="flex items-center gap-2 px-8 py-3 bg-white/20 backdrop-blur-md border-2 border-white rounded-full text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300"
             >

@@ -49,8 +49,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const mainImage = cleanImageUrl(tela.Url_Imagen);
   const galleryImages = tela.tela_imagenes.map((img: any) => cleanImageUrl(img.Imagen_Url));
 
-  // 2. OBTENER TODAS LAS DESCRIPCIONES (LÓGICA CORREGIDA)
-  // Mapeamos el array Telas_Desc para extraer todos los 'Tag'
   const descripciones: string[] = [];
 
   if (tela.Telas_Desc && tela.Telas_Desc.length > 0) {
@@ -61,12 +59,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
      });
   }
 
-  // Si no hay ninguna, ponemos un texto por defecto
   if (descripciones.length === 0) {
       descripciones.push("Sin descripción detallada.");
   }
 
-  // Lógica de Sublimado
   const sublimadoRaw = (tela as any).Sublimado || "No especificado";
   const esSublimable = !sublimadoRaw.toLowerCase().includes("no sublimable");
 
@@ -134,31 +130,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <span className="bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                         {formatText(params.category)}
                     </span>
-                    {esSublimable && (
-                        <span className="bg-orange-100 text-orange-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1">
-                            <Printer size={10} /> Sublimable
-                        </span>
-                    )}
+                    {/* El tag de Sublimable arriba del título ha sido eliminado */}
                 </div>
                 
                 <h1 className="text-3xl md:text-5xl font-black text-gray-900 uppercase tracking-tight mb-3">
                     {tela.Nombre_Corto}
                 </h1>
-                
-                {/* CAJA DE DESCRIPCIONES (Renderiza todas las que existan) */}
-                <div className="mt-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
-                    {descripciones.map((desc, index) => (
-                        <div key={index} className="flex gap-3 mb-3 last:mb-0">
-                            <FileText className="shrink-0 text-blue-400 mt-1" size={20} />
-                            <p className="text-gray-600 text-lg leading-relaxed">{desc}</p>
-                        </div>
-                    ))}
-                </div>
-
             </div>
 
             {/* ESPECIFICACIONES */}
-            <div className="grid grid-cols-2 gap-4 mb-10">
+            <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="p-5 bg-gray-50 rounded-xl border border-gray-100 hover:border-blue-200 transition-colors">
                     <div className="flex items-center gap-2 text-gray-400 mb-2">
                         <Scale size={18} />
@@ -184,18 +165,28 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </div>
 
                 <div className={`p-5 rounded-xl border transition-colors flex flex-col justify-center
-                    ${esSublimable ? 'bg-orange-50 border-orange-100 hover:border-orange-300' : 'bg-gray-100 border-gray-200'}
+                    ${esSublimable ? 'bg-blue-100 border-[#92cddb] hover:border-[#92cddb]' : 'bg-gray-100 border-gray-200'}
                 `}>
                     <div className="flex items-center gap-2 text-gray-400 mb-2">
-                        <Printer size={18} className={esSublimable ? "text-orange-400" : "text-gray-400"} />
-                        <span className={`text-xs font-bold uppercase tracking-wider ${esSublimable ? "text-orange-800/60" : "text-gray-500"}`}>
+                        <Printer size={18} className={esSublimable ? "text-gray-700" : "text-gray-400"} />
+                        <span className={`text-xs font-bold uppercase tracking-wider ${esSublimable ? "text-gray-800/60" : "text-gray-500"}`}>
                             Sublimación
                         </span>
                     </div>
-                    <p className={`text-xl font-bold ${esSublimable ? "text-orange-700" : "text-gray-500"}`}>
+                    <p className={`text-xl font-bold ${esSublimable ? "text-blue-700" : "text-gray-500"}`}>
                         {sublimadoRaw}
                     </p>
                 </div>
+            </div>
+
+            {/* CAJA DE DESCRIPCIONES (Movida abajo de las especificaciones) */}
+            <div className="mb-10 p-5 bg-gray-50 rounded-xl border border-gray-100">
+                {descripciones.map((desc, index) => (
+                    <div key={index} className="flex gap-3 mb-3 last:mb-0">
+                        <FileText className="shrink-0 text-blue-400 mt-1" size={20} />
+                        <p className="text-gray-600 text-lg leading-relaxed">{desc}</p>
+                    </div>
+                ))}
             </div>
 
             {/* BOTONES */}

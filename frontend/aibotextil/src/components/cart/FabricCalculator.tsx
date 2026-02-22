@@ -31,22 +31,22 @@ export default function FabricCalculator() {
   };
 
   return (
-    <div className="bg-blue-900 text-white p-6 rounded-2xl shadow-lg border border-blue-800">
+    <div className="bg-[#92cddb] text-gray-900 p-6 rounded-2xl shadow-lg border border-gray-700">
       <div className="flex items-center gap-2 mb-4">
-        <Calculator className="text-blue-300" size={24} />
+        <Calculator className="text-gray-900" size={24} />
         <h2 className="text-xl font-bold uppercase tracking-wide">
           Calculadora de Rendimiento
         </h2>
       </div>
 
-      <p className="text-sm text-blue-200 mb-4">
+      <p className="text-sm text-gray-900 mb-4">
         Calcula cuántas yardas obtienes por cada kilogramo de tela.
       </p>
 
       <div className="space-y-3">
         {/* INPUT GSM */}
         <div>
-          <label className="block text-xs font-bold uppercase mb-1 text-blue-200">
+          <label className="block text-xs font-bold uppercase mb-1 text-gray-900">
             Peso (GSM)
           </label>
           <input
@@ -54,13 +54,13 @@ export default function FabricCalculator() {
             value={gsm}
             onChange={(e) => setGsm(e.target.value)}
             placeholder="Ej: 140"
-            className="w-full p-2 rounded-lg bg-blue-800 border border-blue-700 text-white placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full p-2 rounded-lg bg-blue-200 border border-gray-900 text-gray-900 placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
 
         {/* INPUT ANCHO */}
         <div>
-          <label className="block text-xs font-bold uppercase mb-1 text-blue-200">
+          <label className="block text-xs font-bold uppercase mb-1 text-gray-900">
             Ancho (cm)
           </label>
           <input
@@ -68,16 +68,16 @@ export default function FabricCalculator() {
             value={width}
             onChange={(e) => setWidth(e.target.value)}
             placeholder="Ej: 153"
-            className="w-full p-2 rounded-lg bg-blue-800 border border-blue-700 text-white placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full p-2 rounded-lg bg-blue-200 border border-gray-900 text-gray-900 placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
 
         {/* RESULTADO */}
         {result !== null && (
           <div className="mt-4 p-3 bg-white/10 rounded-lg text-center border border-white/20 animate-in fade-in slide-in-from-bottom-2">
-            <span className="block text-xs uppercase text-blue-200 mb-1">Resultado Estimado</span>
-            <span className="text-3xl font-black text-white">{result}</span>
-            <span className="text-sm font-medium text-blue-200 ml-1">yd / kg</span>
+            <span className="block text-xs uppercase text-gray-800 mb-1">Resultado Estimado</span>
+            <span className="text-3xl font-black text-gray-800">{result}</span>
+            <span className="text-sm font-medium text-gray-800 ml-1">yd / kg</span>
           </div>
         )}
 

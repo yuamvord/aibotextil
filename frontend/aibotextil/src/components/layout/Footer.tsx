@@ -52,13 +52,13 @@ const Footer = () => {
               calidad y la sostenibilidad en cada fibra.
             </p>
             <div className="flex gap-4 pt-2">
-              <Link href="#" className="hover:text-aibo-red transition-colors duration-300">
+              <Link href="https://www.facebook.com/profile.php?id=61577967202293" target="_blank" className="hover:text-aibo-red transition-colors duration-300">
                 <Facebook size={20} />
               </Link>
-              <Link href="#" className="hover:text-aibo-red transition-colors duration-300">
+              <Link href="https://www.instagram.com/aibotextilgt/" target="_blank" className="hover:text-aibo-red transition-colors duration-300">
                 <Instagram size={20} />
               </Link>
-              <Link href="#" className="hover:text-aibo-red transition-colors duration-300">
+              <Link href="https://www.linkedin.com/company/aibotextil/" target="_blank" className="hover:text-aibo-red transition-colors duration-300">
                 <Linkedin size={20} />
               </Link>
               <Link href="#" className="hover:text-aibo-red transition-colors duration-300">
@@ -84,8 +84,8 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/tecnologias" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
-                  Tecnologías
+                <Link href="/usos" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
+                  Usos
                 </Link>
               </li>
               <li>
@@ -103,22 +103,22 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/productos/nylon" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
+                <Link href="/telas/nylon" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
                   Nylon
                 </Link>
               </li>
               <li>
-                <Link href="/productos/poliester" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
+                <Link href="/telas/poliester" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
                   Poliéster
                 </Link>
               </li>
               <li>
-                <Link href="/productos/spandex" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
+                <Link href="/telas/spandex" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
                   Spandex
                 </Link>
               </li>
               <li>
-                <Link href="/productos/jacquard" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
+                <Link href="/telas/jacquard" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
                   Jacquard
                 </Link>
               </li>
