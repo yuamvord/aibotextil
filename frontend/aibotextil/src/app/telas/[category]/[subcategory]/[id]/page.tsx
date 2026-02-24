@@ -66,7 +66,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const sublimadoRaw = (tela as any).Sublimado || "No especificado";
   const esSublimable = !sublimadoRaw.toLowerCase().includes("no sublimable");
 
-  const phone = "50200000000"; 
+  const phone = "50230063365"; 
   const message = `Hola Aibo Textil, me interesa cotizar la tela: *${tela.Nombre_Corto}* (Código: ${tela.Codigo_Aibo}).`;
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 

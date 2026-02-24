@@ -41,7 +41,7 @@ const Footer = () => {
           <div className="space-y-6">
             <div className="relative w-40 h-20">
               <Image
-                src="/images/logo-aibo.png"
+                src="/images/imagesLogos/logo-aibo.png"
                 alt="Aibo Textil"
                 fill
                 className="object-contain brightness-0 invert"

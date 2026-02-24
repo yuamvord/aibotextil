@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Leaf, Recycle, Droplets, Waves } from "lucide-react";
 
 const ecoTechs = [
   {
@@ -10,7 +9,7 @@ const ecoTechs = [
     description: "Fibra textil obtenida del bambú. Es suave, ligera, transpirable, antibacteriana natural y biodegradable. Aporta frescura y sostenibilidad.",
     uses: "Ropa deportiva ecofriendly, calcetines, camisetas, ropa íntima.",
     image: "/images/imagesSostenibility/eco-bamboo.png",
-    icon: Leaf, 
+    icon: "/images/imagesLogos/Fibrabamboo.png", // <-- CAMBIA ESTA RUTA POR TU PNG REAL
     color: "bg-green-100 text-green-600", 
   },
   {
@@ -20,7 +19,7 @@ const ecoTechs = [
     description: "Poliéster reciclado proveniente de botellas plásticas (PET). Se transforma el plástico en fibra textil reduciendo residuos y el consumo de petróleo.",
     uses: "Uniformes, ropa deportiva, mochilas, textiles sostenibles.",
     image: "/images/imagesSostenibility/eco-rpet.png",
-    icon: Recycle, 
+    icon: "/images/imagesLogos/Rpet.png", // <-- CAMBIA ESTA RUTA POR TU PNG REAL
     color: "bg-blue-50 text-blue-600",
   },
   {
@@ -30,7 +29,7 @@ const ecoTechs = [
     description: "Fibra reciclada de la marca Repreve con tecnología Sorbtek. Hecha de botellas recicladas, absorbe y expulsa la humedad 3 veces más rápido que el poliéster normal.",
     uses: "Camisetas deportivas de alto rendimiento, ropa outdoor.",
     image: "/images/imagesSostenibility/eco-sorbtek.png",
-    icon: Droplets, 
+    icon: "/images/imagesLogos/REPREVESORBTEK.png", // <-- CAMBIA ESTA RUTA POR TU PNG REAL
     color: "bg-teal-50 text-teal-600",
   },
   {
@@ -40,7 +39,7 @@ const ecoTechs = [
     description: "Línea de fibras hechas con plásticos recolectados en zonas costeras. Enfocada en reducir la contaminación marina, convirtiendo el plástico en hilo de alto rendimiento.",
     uses: "Textiles deportivos, moda sostenible, ropa outdoor.",
     image: "/images/imagesSostenibility/eco-ocean.png",
-    icon: Waves, 
+    icon: "/images/imagesLogos/OurOcean.png", // <-- CAMBIA ESTA RUTA POR TU PNG REAL
     color: "bg-cyan-50 text-cyan-600",
   },
 ];
@@ -49,7 +48,6 @@ const EcoTechList = () => {
   return (
     <div className="w-full flex flex-col bg-white">
       {ecoTechs.map((tech, index) => {
-        const Icon = tech.icon;
         const isEven = index % 2 === 0;
 
         return (
@@ -74,11 +72,18 @@ const EcoTechList = () => {
                 </div>
 
                 <div className="flex-1 space-y-6">
-                  <div className="flex items-center gap-3">
-                    <div className={cn("p-3 rounded-full", tech.color)}>
-                      <Icon size={28} />
+                  
+                  {/* AQUÍ ESTÁ EL CAMBIO: Icono PNG limpio */}
+                  <div className="flex items-center gap-4">
+                    <div className="relative w-20 h-20 shrink-0">
+                      <Image 
+                        src={tech.icon} 
+                        alt={`Icono de ${tech.title}`} 
+                        fill 
+                        className="object-contain" 
+                      />
                     </div>
-                    <span className="text-sm font-bold text-gray-400 tracking-widest uppercase">
+                    <span className="text-sm font-bold text-gray-400 tracking-widest uppercase mt-1">
                       Tecnología Sostenible
                     </span>
                   </div>

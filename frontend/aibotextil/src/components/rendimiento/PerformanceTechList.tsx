@@ -1,13 +1,5 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { 
-  Droplets, 
-  Zap,     
-  Sun,     
-  ShieldCheck, 
-  ThermometerSnowflake,
-  Waves
-} from "lucide-react";
 
 const perfTechs = [
   {
@@ -17,7 +9,7 @@ const perfTechs = [
     description: "Transporte de humedad 'sweat management'. Absorbe el sudor de la piel y lo lleva a la superficie exterior de la tela para evaporarse rápidamente.",
     uses: "Ropa deportiva de alto rendimiento, interior funcional.",
     image: "/images/imagesPerformance/tech-wicking.jpg",
-    icon: Droplets,
+    icon: "/images/imagesLogos/MoinstureWicking.png",
     accent: "bg-blue-600",
   },
   {
@@ -27,7 +19,7 @@ const perfTechs = [
     description: "Tecnología que permite que la tela se seque rápidamente. Las fibras están diseñadas para no retener la humedad, sino dispersarla sobre una superficie amplia.",
     uses: "Camisetas deportivas, ropa de entrenamiento y outdoor.",
     image: "/images/imagesPerformance/tech-quick.jpg",
-    icon: Zap,
+    icon: "/images/imagesLogos/quickdry.png",
     accent: "bg-yellow-500",
   },
   {
@@ -37,7 +29,7 @@ const perfTechs = [
     description: "Factor de Protección Ultravioleta 50+. Bloquea más del 98% de los rayos UVA y UVB. El tejido actúa como una barrera solar física.",
     uses: "Ropa para correr, ciclismo, natación y actividades al aire libre.",
     image: "/images/imagesPerformance/tech-uv.jpg",
-    icon: Sun,
+    icon: "/images/imagesLogos/UPF50+.png",
     accent: "bg-orange-500",
   },
   {
@@ -47,7 +39,7 @@ const perfTechs = [
     description: "Tejidos tratados con agentes que inhiben el crecimiento bacteriano. Evita el mal olor en la ropa deportiva incluso tras entrenamientos intensos.",
     uses: "Ropa interior, uniformes, ropa hospitalaria.",
     image: "/images/imagesPerformance/tech-bacterial.jpg",
-    icon: ShieldCheck,
+    icon: "/images/imagesLogos/antibacterial.png",
     accent: "bg-emerald-500",
   },
   {
@@ -57,7 +49,7 @@ const perfTechs = [
     description: "Las fibras dispersan el calor corporal y generan sensación de frescura mediante microcanales o minerales refrigerantes integrados.",
     uses: "Ropa para climas cálidos, running, ciclismo.",
     image: "/images/imagesPerformance/tech-cooling.jpg",
-    icon: ThermometerSnowflake,
+    icon: "/images/imagesLogos/colling.png",
     accent: "bg-cyan-500",
   },
   {
@@ -67,7 +59,7 @@ const perfTechs = [
     description: "En Aibo Textil ofrecemos telas técnicas de alto rendimiento con resistencia superior al agua (hasta 20,000 mm de carga hidrostática), costuras selladas y membranas transpirables que permiten evacuar el vapor del sudor sin dejar pasar el agua, garantizando sequedad y confort incluso en condiciones extremas. Nuestras telas brindan protección contra el viento y los rayos UV, alta durabilidad y ligereza, además de flexibilidad y diseño moderno para aplicaciones deportivas, outdoor y urbanas. Incorporamos innovaciones sostenibles con materiales reciclables y tecnologías eco conscientes, cumpliendo estándares internacionales de calidad, para asegurar un rendimiento confiable y responsable.",
     uses: "Ropa deportiva, equipamiento de aventura, moda urbana.",
     image: "/images/imagesPerformance/tech-waterprof.jpg",
-    icon: Waves,
+    icon: "/images/imagesLogos/waterfproof.png",
     accent: "bg-cyan-500",
   }
 ];
@@ -76,7 +68,6 @@ const PerformanceTechList = () => {
   return (
     <div className="w-full flex flex-col bg-white">
       {perfTechs.map((tech, index) => {
-        const Icon = tech.icon;
         const isEven = index % 2 === 0;
 
         return (
@@ -106,9 +97,16 @@ const PerformanceTechList = () => {
                 </div>
 
                 <div className="flex-1 space-y-8">
-                  <div className="flex items-center gap-4">
-                    <div className={cn("p-4 text-white shadow-lg transform -skew-x-12", tech.accent)}>
-                      <Icon size={32} strokeWidth={2} className="transform skew-x-12" />
+                  
+                  {/* AQUÍ ESTÁ EL CAMBIO: Icono limpio junto al título */}
+                  <div className="flex items-center gap-6">
+                    <div className="relative w-20 h-20 shrink-0">
+                      <Image 
+                        src={tech.icon} 
+                        alt={`Icono de ${tech.title}`} 
+                        fill 
+                        className="object-contain" 
+                      />
                     </div>
                     <h2 className="text-4xl md:text-5xl font-black text-gray-900 italic uppercase tracking-tighter">
                       {tech.title}

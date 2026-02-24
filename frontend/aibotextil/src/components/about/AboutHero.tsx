@@ -9,8 +9,12 @@ const AboutHero = () => {
           src="/images/imagesAboutUs/banner_quienes_somos.jpg" 
           alt="Detalle textil"
           fill
-          className="object-cover object-right"
+          // Ajustamos el enfoque para móvil y pc
+          className="object-cover object-center md:object-right"
           priority
+          // Forzamos alta calidad y definimos el tamaño
+          quality={100}
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-black/60"></div>
       </div>
@@ -25,11 +29,8 @@ const AboutHero = () => {
             cada victoria
           </span>
         </h1>
-        <p className="text-gray-300 text-lg md:text-xl font-light max-w-2xl mx-auto pt-4">
+        <p className="text-gray-300 text-base md:text-xl font-light max-w-2xl mx-auto pt-4">
           Más que proveedores, somos aliados estratégicos en la evolución de la industria textil deportiva en Guatemala.
-        </p>
-        <p className="text-gray-300 text-lg md:text-xl font-light max-w-2xl mx-auto pt-4">
-          
         </p>
       </div>
 

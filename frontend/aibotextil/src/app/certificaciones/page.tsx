@@ -54,7 +54,7 @@ export default function CertificacionesPage() {
               {/* Logo con efecto flotante */}
               <div className="relative w-64 h-64 transform transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3">
                 <Image
-                  src="/images/grs.png" // Asegúrate de que la ruta sea correcta
+                  src="/images/imagesLogos/grs.png" // Asegúrate de que la ruta sea correcta
                   alt="Global Recycled Standard"
                   fill
                   className="object-contain drop-shadow-xl"
@@ -97,7 +97,7 @@ export default function CertificacionesPage() {
               
               <div className="relative w-64 h-64 transform transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-3">
                 <Image
-                  src="/images/oeko-tex.png" // Asegúrate de que la ruta sea correcta
+                  src="/images/imagesLogos/oeko-tex.png" // Asegúrate de que la ruta sea correcta
                   alt="OEKO-TEX Standard 100"
                   fill
                   className="object-contain drop-shadow-xl"
