@@ -10,19 +10,15 @@ interface ProductGalleryProps {
 }
 
 export default function ProductGallery({ mainImage, extraImages, title }: ProductGalleryProps) {
-  // Unimos todas las imágenes posibles
   const allImages = Array.from(new Set([mainImage, ...extraImages])).filter(Boolean);
   
   const [selectedImage, setSelectedImage] = useState(allImages[0]);
 
-  // Estados para el zoom
   const [transformOrigin, setTransformOrigin] = useState("center center");
   const [isHovered, setIsHovered] = useState(false);
 
-  // ESTADO NUEVO: Lista negra de imágenes rotas
   const [brokenImages, setBrokenImages] = useState<Set<string>>(new Set());
 
-  // Lógica del Zoom
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
     const x = ((e.clientX - left) / width) * 100;
@@ -30,7 +26,6 @@ export default function ProductGallery({ mainImage, extraImages, title }: Produc
     setTransformOrigin(`${x}% ${y}%`);
   };
 
-  // Función para manejar errores de carga
   const handleImageError = (imgSrc: string) => {
     console.warn(`Imagen rota ocultada: ${imgSrc}`);
     setBrokenImages((prev) => {
@@ -40,13 +35,11 @@ export default function ProductGallery({ mainImage, extraImages, title }: Produc
     });
   };
 
-  // Si la imagen seleccionada principal está rota, mostramos un placeholder o nada
   const isMainBroken = brokenImages.has(selectedImage);
 
   return (
     <div className="flex flex-col gap-4 w-full select-none">
       
-      {/* --- IMAGEN GRANDE CON ZOOM --- */}
       <div 
         className="relative w-full aspect-square md:aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden shadow-sm border border-gray-200 cursor-zoom-in group"
         onMouseMove={handleMouseMove}
@@ -55,7 +48,7 @@ export default function ProductGallery({ mainImage, extraImages, title }: Produc
             setIsHovered(false);
             setTransformOrigin("center center");
         }}
-        onContextMenu={(e) => e.preventDefault()} // 1. Bloqueo de clic derecho en contenedor principal
+        onContextMenu={(e) => e.preventDefault()} 
       >
         {!isMainBroken ? (
           <>
@@ -63,8 +56,8 @@ export default function ProductGallery({ mainImage, extraImages, title }: Produc
               src={selectedImage}
               alt={title}
               fill
-              draggable={false} // 2. Bloqueo de arrastre
-              className={`object-cover transition-transform duration-200 ease-out select-none pointer-events-none`} // 3. Bloqueo de eventos táctiles nativos
+              draggable={false} 
+              className={`object-cover transition-transform duration-200 ease-out select-none pointer-events-none`} 
               style={{ 
                 transformOrigin: transformOrigin, 
                 transform: isHovered ? "scale(1.5)" : "scale(1)"
@@ -72,7 +65,6 @@ export default function ProductGallery({ mainImage, extraImages, title }: Produc
               priority
               onError={() => handleImageError(selectedImage)}
             />
-            {/* 4. CAPA INVISIBLE ANTIDESCARGA (MÓVIL) */}
             <div className="absolute inset-0 z-10 bg-transparent"></div>
           </>
         ) : (
@@ -90,7 +82,6 @@ export default function ProductGallery({ mainImage, extraImages, title }: Produc
         )}
       </div>
 
-      {/* --- MINIATURAS --- */}
       {allImages.length > 1 && (
         <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
           {allImages.map((img, idx) => {
@@ -101,7 +92,7 @@ export default function ProductGallery({ mainImage, extraImages, title }: Produc
               <button
                 key={idx}
                 onClick={() => setSelectedImage(img)}
-                onContextMenu={(e) => e.preventDefault()} // Bloqueo clic derecho en miniatura
+                onContextMenu={(e) => e.preventDefault()} 
                 className={`
                   relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all
                   ${selectedImage === img ? "border-blue-600 ring-2 ring-blue-100 opacity-100" : "border-transparent opacity-70 hover:opacity-100"}
@@ -111,11 +102,10 @@ export default function ProductGallery({ mainImage, extraImages, title }: Produc
                   src={img}
                   alt={`Vista ${idx + 1}`}
                   fill
-                  draggable={false} // Bloqueo de arrastre
-                  className="object-cover select-none pointer-events-none" // Bloqueo interacciones nativas
+                  draggable={false}
+                  className="object-cover select-none pointer-events-none" 
                   onError={() => handleImageError(img)} 
                 />
-                {/* CAPA INVISIBLE ANTIDESCARGA PARA MINIATURAS */}
                 <div className="absolute inset-0 z-10 bg-transparent cursor-pointer"></div>
               </button>
             );

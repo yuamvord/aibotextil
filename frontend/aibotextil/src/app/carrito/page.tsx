@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Trash2, Send, ArrowLeft } from "lucide-react";
 import { useCart } from "@/context/CartContext";
-// 1. IMPORTAMOS LA CALCULADORA
 import FabricCalculator from "@/components/cart/FabricCalculator"; 
 
 export default function CarritoPage() {
@@ -30,7 +29,6 @@ export default function CarritoPage() {
     if (!formData.nombre) return alert("Por favor escribe tu nombre");
 
     const phone = "50230063365"; 
-    
     
     let itemsText = cart.map((item, index) => {
         return `${index + 1}. *${item.name}* (Código: ${item.code})`;
@@ -66,10 +64,8 @@ ${itemsText}
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            {/* COLUMNA IZQUIERDA: LISTA DE ITEMS + CALCULADORA */}
             <div className="lg:col-span-2 space-y-6">
               
-              {/* 1. LISTA DE TELAS (Solo si hay items) */}
               {cart.length > 0 ? (
                  <div className="space-y-4">
                   {cart.map((item) => (
@@ -91,7 +87,6 @@ ${itemsText}
                   ))}
                 </div>
               ) : (
-                /* MENSAJE DE CARRITO VACÍO (Si no hay items) */
                 <div className="text-center py-10 bg-white rounded-2xl shadow-sm border border-dashed border-gray-300">
                     <p className="text-gray-400 text-lg mb-4">Tu lista está vacía actualmente.</p>
                     <Link href="/" className="inline-block text-blue-600 font-bold hover:underline uppercase text-sm tracking-wider">
@@ -101,7 +96,6 @@ ${itemsText}
               )}
 
               {/* 2. CALCULADORA (Siempre visible y debajo de las telas) */}
-              {/* Al estar en este div, si agregas telas arriba, esto baja automáticamente */}
               <div className="pt-4">
                  <FabricCalculator />
               </div>
@@ -152,7 +146,7 @@ ${itemsText}
 
                     <button 
                         type="submit"
-                        disabled={cart.length === 0} // Deshabilitamos si no hay telas
+                        disabled={cart.length === 0} 
                         className={`w-full font-bold py-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 mt-4
                             ${cart.length === 0 
                                 ? "bg-gray-300 text-gray-500 cursor-not-allowed" 

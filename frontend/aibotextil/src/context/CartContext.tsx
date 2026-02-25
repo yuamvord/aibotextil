@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { Check, X } from "lucide-react"; // Importamos iconos para que se vea pro
+import { Check, X } from "lucide-react"; 
 
 export interface CartItem {
   id: number;
@@ -22,14 +22,12 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
   
-  // Estado para la notificación minimalista (Toast)
   const [notification, setNotification] = useState<{ show: boolean; message: string; type: 'success' | 'error' }>({
     show: false,
     message: "",
     type: 'success'
   });
 
-  // Cargar carrito guardado
   useEffect(() => {
     const savedCart = localStorage.getItem("aibo_cart");
     if (savedCart) {
@@ -37,27 +35,23 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  // Guardar cambios
   useEffect(() => {
     localStorage.setItem("aibo_cart", JSON.stringify(cart));
   }, [cart]);
 
-  // Función para mostrar la notificación temporal
   const showToast = (msg: string, type: 'success' | 'error' = 'success') => {
     setNotification({ show: true, message: msg, type });
-    // Se oculta sola después de 3 segundos
     setTimeout(() => {
       setNotification((prev) => ({ ...prev, show: false }));
     }, 3000);
   };
 
   const addToCart = (item: CartItem) => {
-    // Verificamos si ya existe
     if (!cart.find((i) => i.id === item.id)) {
       setCart([...cart, item]);
-      showToast(`"${item.name}" agregada a tu lista`, 'success'); // ✅ Mensaje bonito
+      showToast(`"${item.name}" agregada a tu lista`, 'success'); 
     } else {
-      showToast("Esta tela ya está en tu lista", 'error'); // ❌ Mensaje de error
+      showToast("Esta tela ya está en tu lista", 'error'); 
     }
   };
 
@@ -74,7 +68,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
     <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
       {children}
 
-      {/* --- AQUÍ ESTÁ EL COMPONENTE VISUAL (TOAST) --- */}
       <div 
         className={`
           fixed bottom-6 right-6 z-[9999] flex items-center gap-3 px-6 py-4 rounded-lg shadow-2xl transition-all duration-500 ease-in-out transform

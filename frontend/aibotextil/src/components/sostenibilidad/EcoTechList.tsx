@@ -8,7 +8,7 @@ const ecoTechs = [
     subtitle: "FIBRA NATURAL & BIODEGRADABLE",
     description: "Fibra textil obtenida del bambú. Es suave, ligera, transpirable, antibacteriana natural y biodegradable. Aporta frescura y sostenibilidad.",
     uses: "Ropa deportiva ecofriendly, calcetines, camisetas, ropa íntima.",
-    image: "/images/imagesSostenibility/eco-bamboo.png",
+    image: "/images/imagesSostenibility/eco-bamboo.jpg",
     icon: "/images/imagesLogos/Fibrabamboo.png", // <-- CAMBIA ESTA RUTA POR TU PNG REAL
     color: "bg-green-100 text-green-600", 
   },
@@ -18,7 +18,7 @@ const ecoTechs = [
     subtitle: "RECICLADO PET",
     description: "Poliéster reciclado proveniente de botellas plásticas (PET). Se transforma el plástico en fibra textil reduciendo residuos y el consumo de petróleo.",
     uses: "Uniformes, ropa deportiva, mochilas, textiles sostenibles.",
-    image: "/images/imagesSostenibility/eco-rpet.png",
+    image: "/images/imagesSostenibility/eco-rpet.jpg",
     icon: "/images/imagesLogos/Rpet.png", // <-- CAMBIA ESTA RUTA POR TU PNG REAL
     color: "bg-blue-50 text-blue-600",
   },
@@ -28,7 +28,7 @@ const ecoTechs = [
     subtitle: "RECICLADO + GESTIÓN DE HUMEDAD",
     description: "Fibra reciclada de la marca Repreve con tecnología Sorbtek. Hecha de botellas recicladas, absorbe y expulsa la humedad 3 veces más rápido que el poliéster normal.",
     uses: "Camisetas deportivas de alto rendimiento, ropa outdoor.",
-    image: "/images/imagesSostenibility/eco-sorbtek.png",
+    image: "/images/imagesSostenibility/eco-sorbtek.jpg",
     icon: "/images/imagesLogos/REPREVESORBTEK.png", // <-- CAMBIA ESTA RUTA POR TU PNG REAL
     color: "bg-teal-50 text-teal-600",
   },
@@ -38,7 +38,7 @@ const ecoTechs = [
     subtitle: "RECICLADO DEL OCÉANO",
     description: "Línea de fibras hechas con plásticos recolectados en zonas costeras. Enfocada en reducir la contaminación marina, convirtiendo el plástico en hilo de alto rendimiento.",
     uses: "Textiles deportivos, moda sostenible, ropa outdoor.",
-    image: "/images/imagesSostenibility/eco-ocean.png",
+    image: "/images/imagesSostenibility/eco-ocean.jpg",
     icon: "/images/imagesLogos/OurOcean.png", // <-- CAMBIA ESTA RUTA POR TU PNG REAL
     color: "bg-cyan-50 text-cyan-600",
   },

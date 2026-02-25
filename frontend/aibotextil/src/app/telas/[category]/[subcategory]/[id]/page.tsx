@@ -28,14 +28,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   if (isNaN(telaId)) return notFound();
 
-  // 1. CONSULTA A LA DB
   const tela = await db.telas.findUnique({
     where: { Id_Tela: telaId },
     include: {
       tela_imagenes: { orderBy: { Orden: 'asc' } },
       Tela_Categoria: { include: { Categorias: true } },
       
-      // Traemos TODAS las relaciones del puente
       Telas_Desc: {
         include: {
           Descripcion: true 
@@ -73,7 +71,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <main className="min-h-screen bg-white pb-20">
       
-      {/* HEADER */}
       <div className="sticky top-20 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
         <div className="container mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
             <Link 
@@ -119,7 +116,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
              />
           </div>
 
-          {/* INFO */}
           <div className="flex flex-col pt-2">
             
             <div className="mb-6 border-b border-gray-100 pb-6">
@@ -130,15 +126,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <span className="bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                         {formatText(params.category)}
                     </span>
-                    {/* El tag de Sublimable arriba del título ha sido eliminado */}
                 </div>
                 
                 <h1 className="text-3xl md:text-5xl font-black text-gray-900 uppercase tracking-tight mb-3">
-                    {tela.Nombre_Corto}
+                    {tela.Nombre_Tela}
                 </h1>
             </div>
 
-            {/* ESPECIFICACIONES */}
             <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="p-5 bg-gray-50 rounded-xl border border-gray-100 hover:border-blue-200 transition-colors">
                     <div className="flex items-center gap-2 text-gray-400 mb-2">
@@ -179,7 +173,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </div>
             </div>
 
-            {/* CAJA DE DESCRIPCIONES (Movida abajo de las especificaciones) */}
             <div className="mb-10 p-5 bg-gray-50 rounded-xl border border-gray-100">
                 {descripciones.map((desc, index) => (
                     <div key={index} className="flex gap-3 mb-3 last:mb-0">
@@ -204,7 +197,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <AddToCartBtn 
                   item={{
                     id: tela.Id_Tela,
-                    name: tela.Nombre_Corto || "Tela",
+                    name: tela.Nombre_Tela || "Tela",
                     code: tela.Codigo_Aibo || "S/C",
                     image: mainImage
                   }} 

@@ -1,8 +1,7 @@
 const MissionVision = () => {
   return (
     <section
-      // bg-gray-800 para celular, y en PC (md:) cargamos la imagen
-      className="relative w-full overflow-hidden bg-gray-600 md:bg-gray-600 md:bg-[url('/images/imagesAboutUs/about-showroom.jpg')] bg-cover bg-center bg-no-repeat"
+      className="relative w-full overflow-hidden bg-[url('/images/imagesAboutUs/about-showroom.jpg')] bg-cover bg-center bg-no-repeat"
     >
       
       {/* Capa oscura: La ocultamos en celular (hidden) porque ya es gris, y la mostramos en PC (md:block) */}

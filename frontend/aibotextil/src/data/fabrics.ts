@@ -22,15 +22,10 @@ export const fabricDatabase: Record<string, FabricCategory> = {
     heroImage: "/images/imagesProducts/D01.jpg",
     color: "#fa4647", 
     subProducts: [
-      // CAMBIO CLAVE: id coincide con el Slug de la DB (fila 7)
       { id: "nylon-100", name: "Nylon 100%", description: "Nylon 100%", features: ["Compresión"] },
-      // id coincide con Slug (fila 3)
       { id: "spandex", name: "Nylon + Spandex", description: "Elasticidad premium.", features: ["Compresión"] },
-      // id coincide con Slug (fila 4)
       { id: "jacquard", name: "Nylon Jacquard", description: "Texturas y diseños.", features: ["Texturizado"] },
-      // id coincide con Slug (fila 6)
       { id: "tecnologia", name: "Nylon Tecnología", description: "Tratamientos avanzados.", features: ["Tech"] },
-      // CAMBIO CLAVE: id coincide con Slug "reciclable" (fila 5)
       { id: "reciclable", name: "Nylon Reciclado", description: "Sostenibilidad.", features: ["Eco-Friendly"] },
     ]
   },

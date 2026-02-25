@@ -7,7 +7,7 @@ export default function AddToCartBtn({ item }: { item: CartItem }) {
   const { addToCart } = useCart();
 
   return (
-    <button
+    <button 
       onClick={() => addToCart(item)}
       className="flex-1 flex items-center justify-center gap-3 bg-gray-900 hover:bg-black text-white font-bold py-4 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
     >
