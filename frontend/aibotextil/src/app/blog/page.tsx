@@ -14,7 +14,6 @@ const articles = [
     title: "El Poliéster",
     subtitle: "La historia detrás de una de las fibras más poderosas del mundo",
     date: "24 Feb 2026",
-    readTime: "3 min",
     image: "/images/imagesProducts/poliester.jpg", 
     content: (
       <div className="space-y-4 text-gray-600 leading-relaxed">
@@ -40,8 +39,7 @@ const articles = [
     type: "blog",
     title: "Spandex (Elastano)",
     subtitle: "La Ciencia de la Elasticidad en la Industria Textil",
-    date: "20 Feb 2026",
-    readTime: "4 min",
+    date: "24 Feb 2026",
     image: "/images/imagesProducts/spandex.jpg", 
     content: (
       <div className="space-y-5 text-gray-600 leading-relaxed">
@@ -130,8 +128,7 @@ const articles = [
     type: "blog",
     title: "Nylon",
     subtitle: "Resistencia y Precisión en la Ingeniería Textil",
-    date: "15 Feb 2026",
-    readTime: "3 min",
+    date: "24 Feb 2026",
     image: "/images/imagesProducts/D01.jpg",
     content: (
       <div className="space-y-5 text-gray-600 leading-relaxed">
@@ -203,8 +200,7 @@ const articles = [
     type: "noticia",
     title: "Tendencias Globales en Ropa Deportiva 2026",
     subtitle: "Lo que las marcas líderes están buscando este año",
-    date: "28 Feb 2026",
-    readTime: "5 min",
+    date: "24 Feb 2026",
     image: "/images/imagesAboutUs/about-showroom.jpg", 
     content: (
       <div className="space-y-4 text-gray-600 leading-relaxed">
