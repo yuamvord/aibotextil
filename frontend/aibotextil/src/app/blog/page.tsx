@@ -285,7 +285,6 @@ export default function BlogNewsPage() {
                 <div className="p-6 flex flex-col flex-1">
                   <div className="flex items-center gap-4 text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">
                     <span className="flex items-center gap-1"><Calendar size={14} /> {article.date}</span>
-                    <span className="flex items-center gap-1"><Clock size={14} /> {article.readTime}</span>
                   </div>
                   
                   <h3 className="text-2xl font-black text-gray-900 uppercase tracking-tight mb-2 group-hover:text-aibo-red transition-colors">
