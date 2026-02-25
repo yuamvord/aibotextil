@@ -19,16 +19,18 @@ const articles = [
     content: (
       <div className="space-y-4 text-gray-600 leading-relaxed">
         <p>Hace algunos años, cuando las marcas buscaban crear prendas más resistentes, más accesibles y con mejor desempeño, necesitaban algo que fuera más allá de lo tradicional.</p>
-        <p>Necesitaban una fibra que aguantara el ritmo del día a día. Que resistiera entrenamientos intensos. Que no se deformara después de varias lavadas. Que fuera versátil.</p>
+        <p>Necesitaban una fibra que aguantara el ritmo del día a día.</p>
+        <p>Que resistiera entrenamientos intensos.</p>
+        <p>Que no se deformara después de varias lavadas.</p>
+        <p>Que fuera versátil.</p>
         <p className="font-bold text-gray-900 text-xl py-2">Así es como el poliéster se convirtió en protagonista.</p>
-        <p>Hoy, más de la mitad de la ropa que se produce en el mundo tiene algo en común: utiliza poliéster en su composición. ¿La razón? <strong>Funciona.</strong></p>
-        <ul className="list-disc pl-5 space-y-2 bg-gray-50 p-6 rounded-lg">
-          <li><strong>Funciona en ropa deportiva</strong> porque es ligero y se seca rápido.</li>
-          <li><strong>Funciona en uniformes</strong> porque mantiene su forma y color.</li>
-          <li><strong>Funciona en moda</strong> porque se puede mezclar con algodón o elastano para lograr comodidad y estructura al mismo tiempo.</li>
-        </ul>
-        <p>Y lo más interesante: <strong>sigue evolucionando.</strong></p>
-        <p>Actualmente, el poliéster también puede producirse a partir de botellas plásticas recicladas, transformando residuos en nuevas oportunidades textiles. Eso demuestra que una fibra sintética también puede adaptarse a los nuevos retos de sostenibilidad e innovación.</p>
+        <p>Hoy, más de la mitad de la ropa que se produce en el mundo tiene algo en común: utiliza poliéster en su composición.</p>
+        <p>¿La razón? Funciona.</p>
+        <p>Funciona en ropa deportiva porque es ligero y se seca rápido.</p>
+        <p>Funciona en uniformes porque mantiene su forma y color.</p>
+        <p>Funciona en moda porque se puede mezclar con algodón o elastano para lograr comodidad y estructura al mismo tiempo.</p>
+        <p>Y lo más interesante: sigue evolucionando.</p>
+        <p>Actualmente, el poliéster también puede producirse a partir de botellas plásticas recicladas, transformando residuos en nuevas oportunidades textiles. Eso demuestra que una fibra sintética también puede adaptarse a los nuevos retos de sostenabilidad e innovación.</p>
         <p>Desde moda accesible hasta textiles de alto rendimiento, el poliéster continúa siendo una base fundamental en la industria global.</p>
       </div>
     )
@@ -48,26 +50,78 @@ const articles = [
         
         <h3 className="text-2xl font-bold text-gray-900 mt-6">¿Qué es el Spandex?</h3>
         <p>El spandex es una fibra sintética compuesta por poliuretano segmentado, diseñada específicamente para proporcionar elasticidad superior con alta recuperación.</p>
-        <p>A diferencia de otras fibras cuyo objetivo principal es aportar resistencia o estabilidad, el spandex cumple una función mecánica clara: permitir que el tejido se estire de manera controlada y regrese a su forma original sin deformarse. Puede elongarse entre 500% y 700% y recuperar prácticamente su longitud inicial, incluso después de múltiples ciclos de uso.</p>
+        <p>A diferencia de otras fibras cuyo objetivo principal es aportar resistencia o estabilidad, el spandex cumple una función mecánica clara: permitir que el tejido se estire de manera controlada y regrese a su forma original sin deformarse.</p>
+        <p>Puede elongarse entre 500% y 700% y recuperar prácticamente su longitud inicial, incluso después de múltiples ciclos de uso.</p>
 
         <h3 className="text-2xl font-bold text-gray-900 mt-6">Principales Propiedades Técnicas</h3>
+        
         <div className="space-y-4">
           <div>
             <h4 className="font-bold text-aibo-red">1. Elasticidad Controlada</h4>
-            <p>El spandex permite la construcción de tejidos con elasticidad en dos o cuatro direcciones (2-way o 4-way stretch), facilitando un ajuste anatómico preciso, libertad de movimiento y conservación de la forma.</p>
+            <p>El spandex permite la construcción de tejidos con elasticidad en dos o cuatro direcciones (2-way o 4-way stretch), facilitando:</p>
+            <ul className="list-disc pl-5 mt-2 space-y-1">
+              <li>Ajuste anatómico preciso</li>
+              <li>Libertad de movimiento</li>
+              <li>Adaptación continua al cuerpo</li>
+              <li>Conservación de la forma de la prenda</li>
+            </ul>
+            <p className="mt-2">Incluso en porcentajes bajos (3–8%), mejora significativamente el comportamiento dinámico del tejido.</p>
           </div>
+          
           <div>
             <h4 className="font-bold text-aibo-red">2. Recuperación Dimensional</h4>
-            <p>Reduce la deformación permanente o “efecto bolsa” en prendas ajustadas. Esta propiedad es especialmente relevante en leggings y ropa de compresión.</p>
+            <p>Una de sus mayores ventajas es su capacidad de recuperación. Esto reduce la deformación permanente o “efecto bolsa” en prendas ajustadas, manteniendo la silueta original con el paso del tiempo.</p>
+            <p>Esta propiedad es especialmente relevante en leggings, ropa deportiva de alto rendimiento y prendas de compresión.</p>
           </div>
+          
           <div>
             <h4 className="font-bold text-aibo-red">3. Confort y Soporte</h4>
-            <p>Genera soporte muscular moderado, mejor adaptación ergonómica y reducción de fricción cuando se combina con nylon o poliéster.</p>
+            <p>Cuando se combina con fibras como nylon o poliéster, el spandex contribuye a generar:</p>
+            <ul className="list-disc pl-5 mt-2 space-y-1">
+              <li>Soporte muscular moderado</li>
+              <li>Mejor adaptación ergonómica</li>
+              <li>Reducción de fricción</li>
+              <li>Mayor comodidad en uso prolongado</li>
+            </ul>
+            <p className="mt-2">La proporción de elastano en la mezcla influye directamente en el nivel de soporte y compresión que ofrece la prenda.</p>
           </div>
         </div>
 
+        <h3 className="text-2xl font-bold text-gray-900 mt-6">Aplicaciones Estratégicas</h3>
+        <p>El spandex es ampliamente utilizado en:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Activewear y athleisure</li>
+          <li>Trajes de baño</li>
+          <li>Ropa de danza y performance</li>
+          <li>Ropa interior y shapewear</li>
+          <li>Denim stretch</li>
+          <li>Prendas técnicas y uniformes con alta movilidad</li>
+        </ul>
+        <p>En cada aplicación, su función es optimizar el desempeño sin comprometer estética o estructura.</p>
+
+        <h3 className="text-2xl font-bold text-gray-900 mt-6">Consideraciones Técnicas</h3>
+        <p>Para garantizar un rendimiento adecuado, es importante considerar:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Control de temperatura en procesos de teñido y acabado</li>
+          <li>Protección frente a exposición prolongada al cloro (en caso de no ser versión especializada)</li>
+          <li>Selección correcta del porcentaje según el uso final</li>
+        </ul>
+        <p>Una ingeniería adecuada del tejido asegura estabilidad y vida útil prolongada.</p>
+
+        <h3 className="text-2xl font-bold text-gray-900 mt-6">Innovación y Desarrollo Responsable</h3>
+        <p>La industria textil continúa avanzando hacia:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Versiones de spandex más resistentes al cloro</li>
+          <li>Elastano con mayor estabilidad térmica</li>
+          <li>Opciones de origen biobasado con menor impacto ambiental</li>
+        </ul>
+        <p>Estos desarrollos permiten mantener altos estándares de rendimiento alineados con nuevas exigencias de sostenibilidad.</p>
+
         <h3 className="text-2xl font-bold text-gray-900 mt-6">Spandex como Decisión Estratégica</h3>
-        <p>En Aibo Textil comprendemos que cada fibra cumple una función específica. El spandex no es solo un complemento; es una herramienta técnica que permite crear prendas más funcionales, más cómodas y mejor adaptadas al movimiento.</p>
+        <p>Aunque suele representar un pequeño porcentaje en la composición de la tela, el spandex tiene un impacto determinante en el comportamiento final de la prenda.</p>
+        <p>Su correcta selección influye en el ajuste, la recuperación, el nivel de compresión y la percepción de calidad.</p>
+        <p>En Aibo Textil comprendemos que cada fibra cumple una función específica dentro del diseño textil. El spandex no es solo un complemento; es una herramienta técnica que permite crear prendas más funcionales, más cómodas y mejor adaptadas al movimiento.</p>
+        <p>Porque en el desarrollo textil moderno, la elasticidad bien diseñada es parte fundamental del rendimiento.</p>
       </div>
     )
   },
@@ -84,31 +138,63 @@ const articles = [
         <p>En la industria textil de alto desempeño, el nylon —también conocido como poliamida— se ha consolidado como una de las fibras más resistentes y versátiles del mercado. Su combinación de fortaleza, ligereza y estabilidad lo convierte en una base estratégica para prendas técnicas y aplicaciones exigentes.</p>
         
         <h3 className="text-2xl font-bold text-gray-900 mt-6">¿Qué es el Nylon?</h3>
-        <p>Desarrollado en la década de 1930 como alternativa a la seda, el nylon es una fibra sintética con una estructura molecular que le permite ofrecer alta resistencia a la tracción, excelente resistencia a la abrasión, ligereza estructural y elasticidad natural moderada.</p>
+        <p>Desarrollado en la década de 1930 como alternativa a la seda, el nylon es una fibra sintética con una estructura molecular que le permite ofrecer:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Alta resistencia a la tracción</li>
+          <li>Excelente resistencia a la abrasión</li>
+          <li>Ligereza estructural</li>
+          <li>Elasticidad natural moderada</li>
+          <li>Gran durabilidad frente al uso continuo</li>
+        </ul>
+        <p>Estas propiedades lo posicionan como una fibra confiable para proyectos donde el desgaste es constante.</p>
 
         <h3 className="text-2xl font-bold text-gray-900 mt-6">Ventajas Técnicas del Nylon</h3>
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-          <li className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-900">
-            <strong className="block text-gray-900">1. Alta Resistencia</strong>
-            Soporta fricción, tensión y movimiento repetitivo sin perder integridad.
-          </li>
-          <li className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-900">
-            <strong className="block text-gray-900">2. Ligereza y Confort</strong>
-            Permite prendas funcionales sin peso excesivo.
-          </li>
-          <li className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-900">
-            <strong className="block text-gray-900">3. Secado Rápido</strong>
-            Es hidrofóbico, no retiene grandes cantidades de agua, facilitando el secado.
-          </li>
-          <li className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-900">
-            <strong className="block text-gray-900">4. Retención de Color</strong>
-            Tiene buena afinidad con los tintes, logrando colores intensos y mayor estabilidad.
-          </li>
+        <div className="space-y-4">
+          <div>
+            <h4 className="font-bold text-aibo-red">1. Alta Resistencia</h4>
+            <p>El nylon soporta fricción, tensión y movimiento repetitivo sin perder integridad. Es ideal para:</p>
+            <ul className="list-disc pl-5 mt-1 space-y-1">
+              <li>Ropa deportiva</li>
+              <li>Prendas outdoor</li>
+              <li>Uniformes técnicos</li>
+              <li>Accesorios de alto uso</li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold text-aibo-red">2. Ligereza y Confort</h4>
+            <p>A pesar de su resistencia, el nylon es ligero, permitiendo prendas funcionales sin peso excesivo. Dependiendo del tejido, puede ofrecer acabados suaves o estructuras más firmes y técnicas.</p>
+          </div>
+          <div>
+            <h4 className="font-bold text-aibo-red">3. Secado Rápido</h4>
+            <p>Al ser hidrofóbico, el nylon no retiene grandes cantidades de agua, lo que facilita:</p>
+            <ul className="list-disc pl-5 mt-1 space-y-1">
+              <li>Secado rápido</li>
+              <li>Mayor comodidad en actividad física</li>
+              <li>Mejor desempeño en ambientes húmedos</li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold text-aibo-red">4. Excelente Retención de Color</h4>
+            <p>El nylon tiene buena afinidad con los tintes, logrando colores intensos y mayor estabilidad frente a lavados y exposición solar.</p>
+          </div>
+        </div>
+
+        <h3 className="text-2xl font-bold text-gray-900 mt-6">Aplicaciones Principales</h3>
+        <p>El nylon se utiliza ampliamente en:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Trajes de baño técnicos</li>
+          <li>Chaquetas y rompevientos</li>
+          <li>Pantalones outdoor</li>
+          <li>Mochilas y accesorios deportivos</li>
         </ul>
+        <p>Su resistencia a la abrasión lo hace especialmente valioso en prendas sometidas a alto desgaste.</p>
+
+        <h3 className="text-2xl font-bold text-gray-900 mt-6">Innovación Responsable</h3>
+        <p>Actualmente, el nylon también se produce en versiones recicladas, reduciendo el impacto ambiental sin comprometer rendimiento técnico.</p>
 
         <h3 className="text-2xl font-bold text-gray-900 mt-6">Una Fibra Estratégica</h3>
         <p>El nylon no es solo una fibra sintética, es una solución de ingeniería que combina resistencia, ligereza y versatilidad.</p>
-        <p className="font-bold text-lg text-aibo-red">En Aibo Textil sabemos que el desempeño de una prenda comienza en la correcta selección del tejido. Y cuando el proyecto exige durabilidad con precisión técnica, el nylon responde.</p>
+        <p>En Aibo Textil sabemos que el desempeño de una prenda comienza en la correcta selección del tejido. Y cuando el proyecto exige durabilidad con precisión técnica, el nylon responde.</p>
       </div>
     )
   },
@@ -119,7 +205,7 @@ const articles = [
     subtitle: "Lo que las marcas líderes están buscando este año",
     date: "28 Feb 2026",
     readTime: "5 min",
-    image: "/images/imagesAboutUs/about-showroom.jpg", // Cambia por tu imagen
+    image: "/images/imagesAboutUs/about-showroom.jpg", 
     content: (
       <div className="space-y-4 text-gray-600 leading-relaxed">
         <p>El mercado deportivo está cambiando rápidamente. La sostenibilidad ya no es una opción, sino una exigencia del consumidor final...</p>
@@ -274,6 +360,8 @@ export default function BlogNewsPage() {
           </div>
         </div>
       )}
+
+
 
     </main>
   );
