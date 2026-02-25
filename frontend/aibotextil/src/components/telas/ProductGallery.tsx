@@ -55,49 +55,53 @@ export default function ProductGallery({ mainImage, extraImages, title }: Produc
             setIsHovered(false);
             setTransformOrigin("center center");
         }}
+        onContextMenu={(e) => e.preventDefault()} // 1. Bloqueo de clic derecho en contenedor principal
       >
         {!isMainBroken ? (
-          <Image
-            src={selectedImage}
-            alt={title}
-            fill
-            className={`object-cover transition-transform duration-200 ease-out`}
-            style={{ 
-              transformOrigin: transformOrigin, 
-              transform: isHovered ? "scale(1.5)" : "scale(1)"
-            }}
-            priority
-            onError={() => handleImageError(selectedImage)}
-          />
+          <>
+            <Image
+              src={selectedImage}
+              alt={title}
+              fill
+              draggable={false} // 2. Bloqueo de arrastre
+              className={`object-cover transition-transform duration-200 ease-out select-none pointer-events-none`} // 3. Bloqueo de eventos táctiles nativos
+              style={{ 
+                transformOrigin: transformOrigin, 
+                transform: isHovered ? "scale(1.5)" : "scale(1)"
+              }}
+              priority
+              onError={() => handleImageError(selectedImage)}
+            />
+            {/* 4. CAPA INVISIBLE ANTIDESCARGA (MÓVIL) */}
+            <div className="absolute inset-0 z-10 bg-transparent"></div>
+          </>
         ) : (
           <div className="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-50">
              <span>Imagen no disponible</span>
           </div>
         )}
         
-        {/* Indicador de Zoom (solo si la imagen sirve) */}
         {!isHovered && !isMainBroken && (
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="bg-white/80 px-3 py-1 rounded-full text-xs font-bold text-gray-700 backdrop-blur-sm">
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity z-20">
+                <span className="bg-white/80 px-3 py-1 rounded-full text-xs font-bold text-gray-700 backdrop-blur-sm shadow-sm">
                     Pasa el mouse para ampliar
                 </span>
             </div>
         )}
       </div>
 
-      {/* --- CARRUSEL DE MINIATURAS --- */}
-      {/* Filtramos visualmente las imágenes que ya sabemos que están rotas */}
+      {/* --- MINIATURAS --- */}
       {allImages.length > 1 && (
         <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
           {allImages.map((img, idx) => {
             
-            // Si la imagen está en la lista negra, NO renderizamos el botón
             if (brokenImages.has(img)) return null;
 
             return (
               <button
                 key={idx}
                 onClick={() => setSelectedImage(img)}
+                onContextMenu={(e) => e.preventDefault()} // Bloqueo clic derecho en miniatura
                 className={`
                   relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all
                   ${selectedImage === img ? "border-blue-600 ring-2 ring-blue-100 opacity-100" : "border-transparent opacity-70 hover:opacity-100"}
@@ -107,9 +111,12 @@ export default function ProductGallery({ mainImage, extraImages, title }: Produc
                   src={img}
                   alt={`Vista ${idx + 1}`}
                   fill
-                  className="object-cover"
-                  onError={() => handleImageError(img)} // ¡Aquí detectamos si falla!
+                  draggable={false} // Bloqueo de arrastre
+                  className="object-cover select-none pointer-events-none" // Bloqueo interacciones nativas
+                  onError={() => handleImageError(img)} 
                 />
+                {/* CAPA INVISIBLE ANTIDESCARGA PARA MINIATURAS */}
+                <div className="absolute inset-0 z-10 bg-transparent cursor-pointer"></div>
               </button>
             );
           })}

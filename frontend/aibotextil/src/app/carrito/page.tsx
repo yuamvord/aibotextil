@@ -29,9 +29,9 @@ export default function CarritoPage() {
     if (cart.length === 0) return alert("Tu lista está vacía");
     if (!formData.nombre) return alert("Por favor escribe tu nombre");
 
-    const phone = "50200000000"; // TU NÚMERO
+    const phone = "50230063365"; 
     
-    // Construimos el mensaje de lista
+    
     let itemsText = cart.map((item, index) => {
         return `${index + 1}. *${item.name}* (Código: ${item.code})`;
     }).join("\n");
