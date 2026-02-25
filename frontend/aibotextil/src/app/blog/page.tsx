@@ -123,7 +123,6 @@ const articles = [
     content: (
       <div className="space-y-4 text-gray-600 leading-relaxed">
         <p>El mercado deportivo está cambiando rápidamente. La sostenibilidad ya no es una opción, sino una exigencia del consumidor final...</p>
-        <p><em>(Aquí podrás redactar el contenido de tus noticias o tendencias)</em></p>
       </div>
     )
   }
