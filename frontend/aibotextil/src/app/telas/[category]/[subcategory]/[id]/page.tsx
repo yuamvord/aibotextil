@@ -128,7 +128,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     </span>
                 </div>
                 
-                <h1 className="text-3xl md:text-5xl font-black text-gray-900 uppercase tracking-tight mb-3">
+                <h1 className="text-1xl md:text-3xl font-black text-gray-900 uppercase tracking-tight mb-3">
                     {tela.Nombre_Tela}
                 </h1>
             </div>

@@ -14,7 +14,7 @@ const articles = [
     title: "El Poliéster",
     subtitle: "La historia detrás de una de las fibras más poderosas del mundo",
     date: "24 Feb 2026",
-    image: "/images/imagesProducts/poliester.jpg", 
+    image: "/images/imagesBlog/poliester.jpeg", 
     content: (
       <div className="space-y-4 text-gray-600 leading-relaxed">
         <p>Hace algunos años, cuando las marcas buscaban crear prendas más resistentes, más accesibles y con mejor desempeño, necesitaban algo que fuera más allá de lo tradicional.</p>
@@ -40,7 +40,7 @@ const articles = [
     title: "Spandex (Elastano)",
     subtitle: "La Ciencia de la Elasticidad en la Industria Textil",
     date: "24 Feb 2026",
-    image: "/images/imagesProducts/spandex.jpg", 
+    image: "/images/imagesBlog/spandex.jpeg", 
     content: (
       <div className="space-y-5 text-gray-600 leading-relaxed">
         <p>En la evolución de los textiles modernos, el spandex —también conocido como elastano— representa uno de los avances más importantes en términos de ajuste, confort y funcionalidad.</p>
@@ -129,7 +129,7 @@ const articles = [
     title: "Nylon",
     subtitle: "Resistencia y Precisión en la Ingeniería Textil",
     date: "24 Feb 2026",
-    image: "/images/imagesProducts/D01.jpg",
+    image: "/images/imagesBlog/nylon.jpeg",
     content: (
       <div className="space-y-5 text-gray-600 leading-relaxed">
         <p>En la industria textil de alto desempeño, el nylon —también conocido como poliamida— se ha consolidado como una de las fibras más resistentes y versátiles del mercado. Su combinación de fortaleza, ligereza y estabilidad lo convierte en una base estratégica para prendas técnicas y aplicaciones exigentes.</p>
@@ -196,20 +196,68 @@ const articles = [
     )
   },
   {
-    id: "tendencia-2026",
+    id: "tendencia-olimpiadas-2026",
     type: "noticia",
-    title: "Tendencias Globales en Ropa Deportiva 2026",
-    subtitle: "Lo que las marcas líderes están buscando este año",
+    title: "Juegos Olímpicos de Invierno Milano-Cortina 2026",
+    subtitle: "No gana solo el atleta… gana la tecnología textil.",
     date: "24 Feb 2026",
-    image: "/images/imagesAboutUs/about-showroom.jpg", 
+    readTime: "4 min",
+    image: "/images/imagesBlog/juegosOlimpicos.jpeg", 
     content: (
-      <div className="space-y-4 text-gray-600 leading-relaxed">
-        <p>El mercado deportivo está cambiando rápidamente. La sostenibilidad ya no es una opción, sino una exigencia del consumidor final...</p>
+      <div className="space-y-5 text-gray-600 leading-relaxed">
+        <p>Los Juegos Olímpicos de Invierno Milano-Cortina 2026 no solo están marcando récords deportivos. También están marcando un antes y un después en la evolución de la tecnología textil aplicada al alto rendimiento.</p>
+        <p>Hoy, el uniforme deportivo ya no es simplemente una prenda. Es una herramienta de ingeniería diseñada para maximizar desempeño, optimizar energía y reducir riesgos.</p>
+
+        <h3 className="text-2xl font-bold text-gray-900 mt-6">La Nueva Generación de Textiles Deportivos</h3>
+        <p>En disciplinas como el patinaje de velocidad, esquí alpino y bobsleigh, donde milésimas de segundo determinan el podio, los trajes incorporan:</p>
+        
+        <div className="space-y-4 mt-4">
+          <div>
+            <h4 className="font-bold text-aibo-red">1. Aerodinámica de Precisión</h4>
+            <p>Estructuras textiles diseñadas mediante estudios de flujo de aire para reducir resistencia y mejorar eficiencia energética.</p>
+          </div>
+          <div>
+            <h4 className="font-bold text-aibo-red">2. Termorregulación Inteligente</h4>
+            <p>Materiales capaces de mantener la temperatura muscular óptima en condiciones extremas de frío, evitando rigidez y pérdida de potencia.</p>
+          </div>
+          <div>
+            <h4 className="font-bold text-aibo-red">3. Textiles con Sensores Biométricos</h4>
+            <p>Prendas que integran hilos conductivos y electrónica flexible para monitorear frecuencia cardíaca, temperatura corporal y activación muscular en tiempo real.</p>
+          </div>
+          <div>
+            <h4 className="font-bold text-aibo-red">4. Elasticidad y Compresión Estratégica</h4>
+            <p>Tejidos técnicos que ofrecen soporte muscular sin limitar movilidad, favoreciendo explosividad y estabilidad.</p>
+          </div>
+        </div>
+
+        <h3 className="text-2xl font-bold text-gray-900 mt-6">¿Por Qué Esto Marca la Diferencia?</h3>
+        <p>En deportes de invierno, el frío extremo afecta directamente el rendimiento fisiológico. Una mala gestión térmica puede generar fatiga prematura o incluso aumentar el riesgo de lesiones.</p>
+        <p>La tecnología textil permite:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Optimizar eficiencia energética</li>
+          <li>Reducir fricción y resistencia</li>
+          <li>Mejorar recuperación entre rondas</li>
+          <li>Obtener datos estratégicos para ajustes técnicos</li>
+        </ul>
+        <p className="mt-2">La ventaja competitiva ya no depende únicamente del atleta. Depende también del desarrollo del material.</p>
+
+        <h3 className="text-2xl font-bold text-gray-900 mt-6">El Impacto en la Industria Textil</h3>
+        <p>Milano-Cortina 2026 confirma una tendencia clara: el mercado deportivo está migrando hacia textiles funcionales, inteligentes y de alto valor agregado.</p>
+        <p>Para marcas y confeccionistas, esto significa evolucionar hacia:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Desarrollo de materiales especializados</li>
+          <li>Innovación aplicada al rendimiento</li>
+          <li>Integración tecnológica en prendas deportivas</li>
+          <li>Diferenciación basada en desempeño real</li>
+        </ul>
+        <p className="mt-2">La industria textil tiene la oportunidad de dejar de competir solo por precio y empezar a competir por innovación.</p>
+
+        <h3 className="text-2xl font-bold text-gray-900 mt-6">El Futuro se Teje Hoy</h3>
+        <p>Los Juegos Olímpicos son una vitrina global de hacia dónde se dirige el sector. Los textiles técnicos, inteligentes y sostenibles ya no son una opción futura: son una exigencia del mercado.</p>
       </div>
     )
   }
 ];
-
 export default function BlogNewsPage() {
   const [activeTab, setActiveTab] = useState<"blog" | "noticia">("blog");
   const [selectedArticle, setSelectedArticle] = useState<any | null>(null);

@@ -36,11 +36,8 @@ export async function generateMetadata({ params }: SubcategoryPageProps) {
 export default async function SubcategoryPage({
   params,
 }: SubcategoryPageProps) {
-  // 1. ELEGIR COLOR ALEATORIO
-  // Como usamos "force-dynamic", esto se ejecuta cada vez que alguien entra
   const randomColor = headerColors[Math.floor(Math.random() * headerColors.length)];
 
-  // Normalizamos a minúsculas
   const mainCategory = params.category.toLowerCase();
   const subFilter = params.subcategory.toLowerCase();
 
@@ -48,7 +45,6 @@ export default async function SubcategoryPage({
 
   let whereCondition: any = {};
 
-  // CASO 1: Ver TODAS
   if (subFilter === "todas") {
     whereCondition = {
       OR: [
@@ -62,7 +58,6 @@ export default async function SubcategoryPage({
       ],
     };
   }
-  // CASO 2: Ver SUBCATEGORÍA
   else {
     const searchTerm =
       subFilter.replace(mainCategory, "").replace("-", "").trim() || subFilter;
@@ -131,10 +126,7 @@ export default async function SubcategoryPage({
 
   return (
     <main className="min-h-screen bg-gray-50">
-      {/* CAMBIOS EN EL HEADER:
-         1. Quitamos bg-blue-900
-         2. Agregamos style={{ backgroundColor: randomColor }}
-      */}
+      
       <header 
         className="w-full text-white py-6 px-6 shadow-lg relative z-10 transition-colors duration-500 ease-in-out"
         style={{ backgroundColor: randomColor }}
@@ -163,7 +155,6 @@ export default async function SubcategoryPage({
             </h1>
           </div>
 
-          {/* ELIMINÉ EL DIV VACÍO DE LA DERECHA PARA QUE EL CENTRADO SEA REAL */}
           
         </div>
       </header>
