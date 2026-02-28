@@ -20,7 +20,7 @@ export default function TelaCard({ tela }: TelaCardProps): React.JSX.Element {
       </div>
 
       <div className="w-full px-4">
-        <span className="block w-full py-2 px-4 border-2 border-aibo-red text-aibo-red font-bold uppercase text-sm text-center rounded-full bg-white shadow-sm transition-all duration-300 group-hover:bg-aibo-red group-hover:text-white group-hover:shadow-md group-hover:-translate-y-1">
+        <span className="block w-full py-2 px-4 border-2 border-aibo-red text-aibo-red font-bold uppercase text-[10px] md:text-sm text-center rounded-full bg-white shadow-sm transition-all duration-300 group-hover:bg-aibo-red group-hover:text-white group-hover:shadow-md group-hover:-translate-y-1">
           {tela.nombre}
         </span>
       </div>
