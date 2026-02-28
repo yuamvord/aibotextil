@@ -82,7 +82,7 @@ const PerformanceTechList = () => {
               )}>
                 
                 <div className="flex-1 w-full group">
-                  <div className="relative h-[400px] w-full shadow-2xl overflow-hidden">
+                  <div className="relative h-[600px] w-full shadow-2xl overflow-hidden">
                     <div className={cn("absolute top-0 right-0 w-full h-full opacity-20 translate-x-4 translate-y-4 transition-transform group-hover:translate-x-6 group-hover:translate-y-6", tech.accent)}></div>
                     
                     <Image

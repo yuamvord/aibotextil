@@ -61,7 +61,7 @@ const EcoTechList = () => {
                 <div className="flex-1 w-full relative group">
                   <div className={cn("absolute top-4 -left-4 w-full h-full rounded-2xl -z-10 transition-transform group-hover:translate-x-2 group-hover:translate-y-2", tech.color.split(" ")[0])}></div>
                   
-                  <div className="relative h-[350px] md:h-[450px] w-full rounded-2xl overflow-hidden shadow-lg">
+                  <div className="relative h-[350px] md:h-[550px] w-full rounded-2xl overflow-hidden shadow-lg">
                     <Image
                       src={tech.image}
                       alt={tech.title}

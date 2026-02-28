@@ -6,7 +6,7 @@ import { X, ChevronRight, BookOpen, TrendingUp, Calendar, Clock } from "lucide-r
 import { cn } from "@/lib/utils";
 
 // --- 1. BASE DE DATOS DEL BLOG Y NOTICIAS ---
-// Aquí puedes agregar, editar o quitar artículos fácilmente.
+// Ahora cada artículo tiene DOS imágenes: cardImage (para la tarjeta) y heroImage (para el banner abierto)
 const articles = [
   {
     id: "poliester",
@@ -14,7 +14,11 @@ const articles = [
     title: "El Poliéster",
     subtitle: "La historia detrás de una de las fibras más poderosas del mundo",
     date: "24 Feb 2026",
-    image: "/images/imagesBlog/poliester.jpeg", 
+    readTime: "3 min",
+    // Imagen para la tarjeta (la que ya tenías)
+    cardImage: "/images/imagesBlog/poliester.jpeg", 
+    // NUEVA: Imagen horizontal para el banner al abrir. ¡CAMBIA ESTA RUTA POR LA TUYA!
+    heroImage: "/images/imagesBlog/poliesterBlog.jpeg", 
     content: (
       <div className="space-y-4 text-gray-600 leading-relaxed">
         <p>Hace algunos años, cuando las marcas buscaban crear prendas más resistentes, más accesibles y con mejor desempeño, necesitaban algo que fuera más allá de lo tradicional.</p>
@@ -40,7 +44,11 @@ const articles = [
     title: "Spandex (Elastano)",
     subtitle: "La Ciencia de la Elasticidad en la Industria Textil",
     date: "24 Feb 2026",
-    image: "/images/imagesBlog/spandex.jpeg", 
+    readTime: "4 min",
+    // Imagen para la tarjeta
+    cardImage: "/images/imagesBlog/spandex.jpeg", 
+    // NUEVA: Imagen horizontal para el banner. ¡CAMBIA ESTA RUTA!
+    heroImage: "/images/imagesBlog/spandexBlog.jpeg", 
     content: (
       <div className="space-y-5 text-gray-600 leading-relaxed">
         <p>En la evolución de los textiles modernos, el spandex —también conocido como elastano— representa uno de los avances más importantes en términos de ajuste, confort y funcionalidad.</p>
@@ -129,7 +137,11 @@ const articles = [
     title: "Nylon",
     subtitle: "Resistencia y Precisión en la Ingeniería Textil",
     date: "24 Feb 2026",
-    image: "/images/imagesBlog/nylon.jpeg",
+    readTime: "3 min",
+    // Imagen para la tarjeta
+    cardImage: "/images/imagesBlog/nylon.jpeg",
+    // NUEVA: Imagen horizontal para el banner. ¡CAMBIA ESTA RUTA!
+    heroImage: "/images/imagesBlog/nylonBlog.jpeg",
     content: (
       <div className="space-y-5 text-gray-600 leading-relaxed">
         <p>En la industria textil de alto desempeño, el nylon —también conocido como poliamida— se ha consolidado como una de las fibras más resistentes y versátiles del mercado. Su combinación de fortaleza, ligereza y estabilidad lo convierte en una base estratégica para prendas técnicas y aplicaciones exigentes.</p>
@@ -202,7 +214,10 @@ const articles = [
     subtitle: "No gana solo el atleta… gana la tecnología textil.",
     date: "24 Feb 2026",
     readTime: "4 min",
-    image: "/images/imagesBlog/juegosOlimpicos.jpeg", 
+    // Imagen para la tarjeta
+    cardImage: "/images/imagesBlog/juegosOlimpicos.jpeg", 
+    // NUEVA: Imagen horizontal para el banner. ¡CAMBIA ESTA RUTA!
+    heroImage: "/images/imagesBlog/juegosOlimpicos.jpeg", 
     content: (
       <div className="space-y-5 text-gray-600 leading-relaxed">
         <p>Los Juegos Olímpicos de Invierno Milano-Cortina 2026 no solo están marcando récords deportivos. También están marcando un antes y un después en la evolución de la tecnología textil aplicada al alto rendimiento.</p>
@@ -258,6 +273,7 @@ const articles = [
     )
   }
 ];
+
 export default function BlogNewsPage() {
   const [activeTab, setActiveTab] = useState<"blog" | "noticia">("blog");
   const [selectedArticle, setSelectedArticle] = useState<any | null>(null);
@@ -311,7 +327,7 @@ export default function BlogNewsPage() {
             Pronto publicaremos nuevo contenido en esta sección.
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
             {filteredArticles.map((article) => (
               <article 
                 key={article.id} 
@@ -319,20 +335,20 @@ export default function BlogNewsPage() {
                 onClick={() => setSelectedArticle(article)}
               >
                 <div className="relative h-56 w-full overflow-hidden">
+                  {/* AQUÍ USAMOS LA IMAGEN DE LA TARJETA (cardImage) */}
                   <Image
-                    src={article.image}
+                    src={article.cardImage}
                     alt={article.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-gray-800 uppercase tracking-widest">
-                    {article.type === "blog" ? "Textil" : "Mercado"}
-                  </div>
+                
                 </div>
                 
                 <div className="p-6 flex flex-col flex-1">
                   <div className="flex items-center gap-4 text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">
                     <span className="flex items-center gap-1"><Calendar size={14} /> {article.date}</span>
+                    <span className="flex items-center gap-1"><Clock size={14} /> {article.readTime}</span>
                   </div>
                   
                   <h3 className="text-2xl font-black text-gray-900 uppercase tracking-tight mb-2 group-hover:text-aibo-red transition-colors">
@@ -354,7 +370,7 @@ export default function BlogNewsPage() {
 
       {/* MODAL DE LECTURA (Se abre al hacer clic en una tarjeta) */}
       {selectedArticle && (
-        <div className="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm transition-opacity">
+        <div className="fixed inset-0 z-50 flex justify-center bg-black/60 backdrop-blur-sm transition-opacity">
           
           {/* Botón invisible para cerrar haciendo clic afuera */}
           <div className="absolute inset-0" onClick={() => setSelectedArticle(null)}></div>
@@ -370,8 +386,9 @@ export default function BlogNewsPage() {
             </button>
 
             <div className="relative h-[30vh] md:h-[40vh] w-full">
+              {/* AQUÍ USAMOS LA IMAGEN HORIZONTAL DEL BANNER (heroImage) */}
               <Image
-                src={selectedArticle.image}
+                src={selectedArticle.heroImage}
                 alt={selectedArticle.title}
                 fill
                 className="object-cover"
@@ -403,8 +420,6 @@ export default function BlogNewsPage() {
           </div>
         </div>
       )}
-
-
 
     </main>
   );
