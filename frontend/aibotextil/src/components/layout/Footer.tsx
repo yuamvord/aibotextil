@@ -7,10 +7,17 @@ import {
   Mail,
   MapPin,
   Phone,
+  MessageCircle,
 } from "lucide-react";
 
 // Componente personalizado para el icono de TikTok (Estilo Lucide)
-const Tiktok = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
+const Tiktok = ({
+  size = 24,
+  className = "",
+}: {
+  size?: number;
+  className?: string;
+}) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -34,7 +41,6 @@ const Footer = () => {
     <footer className="bg-neutral-900 text-gray-300 font-light">
       {/* --- SECCIÓN PRINCIPAL (GRID) --- */}
       <div className="container mx-auto px-6 py-16">
-        
         {/* AQUÍ EMPIEZA LA GRILLA DE 4 COLUMNAS */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* COLUMNA 1: MARCA Y DESCRIPCIÓN */}
@@ -52,16 +58,32 @@ const Footer = () => {
               calidad y la sostenibilidad en cada fibra.
             </p>
             <div className="flex gap-4 pt-2">
-              <Link href="https://www.facebook.com/profile.php?id=61577967202293" target="_blank" className="hover:text-aibo-red transition-colors duration-300">
+              <Link
+                href="https://www.facebook.com/profile.php?id=61577967202293"
+                target="_blank"
+                className="hover:text-aibo-red transition-colors duration-300"
+              >
                 <Facebook size={20} />
               </Link>
-              <Link href="https://www.instagram.com/aibotextilgt/" target="_blank" className="hover:text-aibo-red transition-colors duration-300">
+              <Link
+                href="https://www.instagram.com/aibotextilgt/"
+                target="_blank"
+                className="hover:text-aibo-red transition-colors duration-300"
+              >
                 <Instagram size={20} />
               </Link>
-              <Link href="https://www.linkedin.com/company/aibotextil/" target="_blank" className="hover:text-aibo-red transition-colors duration-300">
+              <Link
+                href="https://www.linkedin.com/company/aibotextil/"
+                target="_blank"
+                className="hover:text-aibo-red transition-colors duration-300"
+              >
                 <Linkedin size={20} />
               </Link>
-              <Link href="#" className="hover:text-aibo-red transition-colors duration-300">
+              <Link
+                href="https://www.tiktok.com/@aibotextil?_r=1&_t=ZS-94HiAeXJESG"
+                target="_blank"
+                className="hover:text-aibo-red transition-colors duration-300"
+              >
                 <Tiktok size={20} />
               </Link>
             </div>
@@ -74,22 +96,34 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
+                <Link
+                  href="/"
+                  className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block"
+                >
                   Inicio
                 </Link>
               </li>
               <li>
-                <Link href="/quienes-somos" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
+                <Link
+                  href="/quienes-somos"
+                  className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block"
+                >
                   Quiénes Somos
                 </Link>
               </li>
               <li>
-                <Link href="/usos" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
+                <Link
+                  href="/usos"
+                  className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block"
+                >
                   Usos
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
+                <Link
+                  href="/blog"
+                  className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block"
+                >
                   Blog & Noticias
                 </Link>
               </li>
@@ -103,22 +137,34 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/telas/nylon" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
+                <Link
+                  href="/telas/nylon"
+                  className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block"
+                >
                   Nylon
                 </Link>
               </li>
               <li>
-                <Link href="/telas/poliester" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
+                <Link
+                  href="/telas/poliester"
+                  className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block"
+                >
                   Poliéster
                 </Link>
               </li>
               <li>
-                <Link href="/telas/spandex" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
+                <Link
+                  href="/telas/spandex"
+                  className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block"
+                >
                   Spandex
                 </Link>
               </li>
               <li>
-                <Link href="/telas/jacquard" className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block">
+                <Link
+                  href="/telas/jacquard"
+                  className="hover:text-aibo-red hover:pl-1 transition-all duration-300 block"
+                >
                   Jacquard
                 </Link>
               </li>
@@ -145,13 +191,30 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-aibo-red shrink-0" />
-                <a href="mailto:aibotextil@hotmail.com" className="hover:text-white transition-colors">
+                <a
+                  href="mailto:aibotextil@hotmail.com"
+                  className="hover:text-white transition-colors"
+                >
                   aibotextil@hotmail.com
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <a
+                  href="https://wa.me/50230063365"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-3 hover:text-green-600 transition-colors"
+                >
+                  <MessageCircle
+                    size={18}
+                    className="text-green-500 shrink-0 group-hover:scale-110 transition-transform"
+                  />
+                  <span>+502 6646-8427</span>
                 </a>
               </li>
             </ul>
           </div>
-        </div> 
+        </div>
         {/* FIN DEL DIV GRID (Aquí cerramos las columnas) */}
 
         {/* --- VERSÍCULO CENTRADO (Fuera del grid, pero dentro del container) --- */}
@@ -163,7 +226,6 @@ const Footer = () => {
             <em>Mateo 19:26</em>
           </Link>
         </div>
-
       </div>
 
       {/* --- BARRA INFERIOR (COPYRIGHT) --- */}
@@ -174,10 +236,16 @@ const Footer = () => {
           </p>
 
           <div className="flex gap-6">
-            <Link href="/privacidad" className="hover:text-white transition-colors">
+            <Link
+              href="/privacidad"
+              className="hover:text-white transition-colors"
+            >
               Política de Privacidad
             </Link>
-            <Link href="/terminos" className="hover:text-white transition-colors">
+            <Link
+              href="/terminos"
+              className="hover:text-white transition-colors"
+            >
               Términos y Condiciones
             </Link>
           </div>

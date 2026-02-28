@@ -1,3 +1,5 @@
+export const revalidate = 3600;
+
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MessageCircle, Scale, Ruler, Layers, ArrowLeft, Home, Printer, FileText } from "lucide-react";

@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@prisma/client": "^5.13.0",
+    "@upstash/ratelimit": "^2.0.8",
+    "@upstash/redis": "^1.36.3",
     "clsx": "^2.1.1",
     "lucide-react": "^0.344.0",
     "next": "14.2.3",

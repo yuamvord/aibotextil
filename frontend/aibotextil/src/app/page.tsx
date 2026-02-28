@@ -1,9 +1,11 @@
+export const revalidate = 3600;
 import Banner from "@/components/home/Banner";
 import AboutSection from "@/components/home/AboutSection";
 import ProductCategories from "@/components/home/ProductCategories";
 import TechnologiesSection from "@/components/home/TechnologiesSection";
 import Certifications from "@/components/home/Certifications";
 import UsesSection from "@/components/home/UsesSection";
+
 
 export default function Home() {
   return (

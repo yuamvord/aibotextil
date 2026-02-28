@@ -1,3 +1,4 @@
+export const revalidate = 3600;
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation"; // Importar manejo de 404
@@ -11,7 +12,7 @@ interface PageProps {
   };
 }
 
-export default function CategoryMenuPage({ params }: PageProps) {
+export default async function CategoryMenuPage({ params }: PageProps) {
   // 1. Normalizar el slug (asegurar minúsculas)
   const categorySlug = params.category.toLowerCase();
 
