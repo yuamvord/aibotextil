@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, ShoppingCart } from "lucide-react"; // Agregamos ShoppingCart
-import { useCart } from "@/context/CartContext"; // Importamos el hook del carrito
+import { Menu, X, ChevronDown, ShoppingCart } from "lucide-react"; 
+import { useCart } from "@/context/CartContext"; 
 
 const navLinks = [
   { name: "INICIO", href: "/" },
@@ -35,7 +35,7 @@ const navLinks = [
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { cart } = useCart(); // Usamos el contexto para ver cuántos items hay
+  const { cart } = useCart(); 
 
   return (
     <header className="sticky top-0 z-50 w-full bg-aibo-red text-white shadow-md">
@@ -122,24 +122,24 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* 4. MENÚ DESPLEGABLE MÓVIL */}
+      {/* 4. MENÚ DESPLEGABLE MÓVIL (Fondo negro, letras blancas) */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-aibo-red border-t border-red-400 max-h-[80vh] overflow-y-auto shadow-inner">
+        <div className="md:hidden bg-black border-t border-gray-800 max-h-[80vh] overflow-y-auto shadow-inner">
           <div className="space-y-1 px-4 pb-8 pt-4">
             {navLinks.map((link) => (
               <div key={link.name}>
                 {link.submenu ? (
                   <div className="space-y-1 mt-2 mb-2">
-                    <div className="px-3 py-2 text-base font-black uppercase tracking-widest text-red-100 border-b border-red-400/30">
+                    <div className="px-3 py-2 text-base font-black uppercase tracking-widest text-gray-300 border-b border-gray-800">
                       {link.name}
                     </div>
-                    <div className="ml-4 border-l-2 border-red-300/50 pl-2 space-y-1">
+                    <div className="ml-4 border-l-2 border-gray-800 pl-2 space-y-1">
                         {link.submenu.map((subLink) => (
                         <Link
                             key={subLink.name}
                             href={subLink.href}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="block rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-red-600 transition-colors"
+                            className="block rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-gray-800 transition-colors"
                         >
                             {subLink.name}
                         </Link>
@@ -150,7 +150,7 @@ const Navbar = () => {
                   <Link
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block rounded-md px-3 py-3 text-base font-bold uppercase tracking-widest text-white hover:bg-red-600 transition-colors"
+                    className="block rounded-md px-3 py-3 text-base font-bold uppercase tracking-widest text-white hover:bg-gray-800 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -161,7 +161,7 @@ const Navbar = () => {
              <Link
                 href="/carrito"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block rounded-md px-3 py-3 mt-4 bg-white text-aibo-red text-center text-base font-bold uppercase tracking-widest hover:bg-gray-100 transition-colors"
+                className="block rounded-md px-3 py-3 mt-4 bg-white text-black text-center text-base font-black uppercase tracking-widest hover:bg-gray-200 transition-colors"
               >
                 Ver Mi Cotización ({cart.length})
               </Link>
