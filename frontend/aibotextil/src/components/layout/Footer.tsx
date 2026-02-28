@@ -209,7 +209,7 @@ const Footer = () => {
                     size={18}
                     className="text-green-500 shrink-0 group-hover:scale-110 transition-transform"
                   />
-                  <span>+502 6646-8427</span>
+                  <span>+502 3006-3365</span>
                 </a>
               </li>
             </ul>
