@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlserver"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -47,15 +47,15 @@ model tela_imagenes {
 
 model Telas {
   Id_Tela        Int              @id @default(autoincrement())
-  Codigo_Fabrica String           @db.NVarChar(70)
-  Codigo_Aibo    String           @unique @db.NVarChar(70)
-  Nombre_Tela    String           @db.NVarChar(255)
-  Nombre_Corto   String           @db.NVarChar(255)
-  Peso           String           @db.NVarChar(50)
-  Ancho          String           @db.NVarChar(50)
-  Composicion    String           @db.NVarChar(255)
-  Url_Imagen     String?          @db.NVarChar(Max)
-  Sublimado      String?          @default("Sublimable") @db.NVarChar(50)
+  Codigo_Fabrica String           
+  Codigo_Aibo    String           @unique 
+  Nombre_Tela    String           
+  Nombre_Corto   String           
+  Peso           String           
+  Ancho          String           
+  Composicion    String           
+  Url_Imagen     String?          
+  Sublimado      String?          @default("Sublimable") 
 
   // RELACIONES
   Tela_Categoria Tela_Categoria[]
@@ -64,8 +64,6 @@ model Telas {
   // Conexión con la tabla puente
   Telas_Desc     Telas_Desc[]
 }
-
-// ... (Tus otros modelos) ...
 
 model Telas_Desc {
   // Esta es la tabla puente (solo IDs)
@@ -83,7 +81,7 @@ model Descripcion {
   Id_Desc     Int          @id @default(autoincrement())
   
   // CORRECCIÓN AQUÍ: Se llama Tag en la BD
-  Tag         String       @db.NVarChar(Max) 
+  Tag         String       
 
   // Relación inversa
   Telas_Desc  Telas_Desc[]
