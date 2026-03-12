@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 
 interface ProductGalleryProps {
   mainImage: string;
@@ -10,13 +9,12 @@ interface ProductGalleryProps {
 }
 
 export default function ProductGallery({ mainImage, extraImages, title }: ProductGalleryProps) {
+  // Eliminamos duplicados y filtramos vacíos
   const allImages = Array.from(new Set([mainImage, ...extraImages])).filter(Boolean);
   
   const [selectedImage, setSelectedImage] = useState(allImages[0]);
-
   const [transformOrigin, setTransformOrigin] = useState("center center");
   const [isHovered, setIsHovered] = useState(false);
-
   const [brokenImages, setBrokenImages] = useState<Set<string>>(new Set());
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -40,6 +38,7 @@ export default function ProductGallery({ mainImage, extraImages, title }: Produc
   return (
     <div className="flex flex-col gap-4 w-full select-none">
       
+      {/* IMAGEN PRINCIPAL */}
       <div 
         className="relative w-full aspect-square md:aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden shadow-sm border border-gray-200 cursor-zoom-in group"
         onMouseMove={handleMouseMove}
@@ -52,24 +51,23 @@ export default function ProductGallery({ mainImage, extraImages, title }: Produc
       >
         {!isMainBroken ? (
           <>
-            <Image
+            {/* Cambiado de <Image /> a <img> para evitar Error 402 */}
+            <img
               src={selectedImage}
               alt={title}
-              fill
               draggable={false} 
-              className={`object-cover transition-transform duration-200 ease-out select-none pointer-events-none`} 
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-200 ease-out select-none pointer-events-none" 
               style={{ 
                 transformOrigin: transformOrigin, 
                 transform: isHovered ? "scale(1.5)" : "scale(1)"
               }}
-              priority
               onError={() => handleImageError(selectedImage)}
             />
             <div className="absolute inset-0 z-10 bg-transparent"></div>
           </>
         ) : (
           <div className="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-50">
-             <span>Imagen no disponible</span>
+               <span>Imagen no disponible</span>
           </div>
         )}
         
@@ -82,10 +80,10 @@ export default function ProductGallery({ mainImage, extraImages, title }: Produc
         )}
       </div>
 
+      {/* MINIATURAS (THUMBNAILS) */}
       {allImages.length > 1 && (
         <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
           {allImages.map((img, idx) => {
-            
             if (brokenImages.has(img)) return null;
 
             return (
@@ -98,12 +96,11 @@ export default function ProductGallery({ mainImage, extraImages, title }: Produc
                   ${selectedImage === img ? "border-blue-600 ring-2 ring-blue-100 opacity-100" : "border-transparent opacity-70 hover:opacity-100"}
                 `}
               >
-                <Image
+                {/* Cambiado de <Image /> a <img> para evitar Error 402 */}
+                <img
                   src={img}
                   alt={`Vista ${idx + 1}`}
-                  fill
-                  draggable={false}
-                  className="object-cover select-none pointer-events-none" 
+                  className="w-full h-full object-cover select-none pointer-events-none" 
                   onError={() => handleImageError(img)} 
                 />
                 <div className="absolute inset-0 z-10 bg-transparent cursor-pointer"></div>
